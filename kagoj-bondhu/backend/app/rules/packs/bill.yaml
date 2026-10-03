@@ -1,0 +1,14 @@
+id: bill
+version: 1
+source: "DPDC residential tariff, February 2024 historical demo snapshot; NOT a current-bill validation. https://dpdc.gov.bd/site/page/27e77af7-1187-436c-9f80-b579d3493a46/"
+params:
+  lifeline_rate: 4.63
+  vat_percent: 5
+  tolerance_taka: 10
+  slabs:                      # 'units' = size of the slab; null = everything above
+    - {units: 75,   rate: 5.26}
+    - {units: 125,  rate: 7.20}
+    - {units: 100,  rate: 7.59}
+    - {units: 100,  rate: 8.02}
+    - {units: 200,  rate: 12.67}
+    - {units: null, rate: 14.61}

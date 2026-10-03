@@ -1,0 +1,6 @@
+id: loan
+version: 1
+source: "Monthly cash-flow IRR. 24% is an UNVERIFIED demo comparison reference, not a universal legal cap."
+params:
+  guideline_cap_percent: 24
+  installment_tolerance_taka: 2

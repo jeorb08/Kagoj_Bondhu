@@ -1,0 +1,6 @@
+id: khata
+version: 1
+source: "Balance = credit given minus payments received, per customer."
+params:
+  overdue_days: 60
+  warning_days: 30

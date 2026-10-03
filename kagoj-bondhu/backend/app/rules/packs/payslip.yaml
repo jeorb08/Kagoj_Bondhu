@@ -1,0 +1,7 @@
+id: payslip
+version: 1
+source: "Bangladesh Labour Act s.108: twice ordinary basic plus eligible allowances. 208 is a demo divisor pending applicable rule confirmation. https://bdlaws.minlaw.gov.bd/act-print-952.html"
+params:
+  monthly_divisor: 208        # 26 days x 8 hours, common garment-sector practice
+  overtime_multiplier: 2
+  tolerance_taka: 1           # ignore differences smaller than this

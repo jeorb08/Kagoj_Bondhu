@@ -1,0 +1,65 @@
+[
+  {
+    "id": "consistent",
+    "label": "Consistent synthetic payslip",
+    "module": "payslip",
+    "values": {
+      "name": "Ruma Islam",
+      "emp_id": "SW-4828",
+      "month": "November 2026",
+      "basic": 13750,
+      "house": 6875,
+      "medical": 750,
+      "transport": 450,
+      "food": 1250,
+      "ot_hours": 36,
+      "ot_rate": 132.21,
+      "ot_amount": 4760,
+      "deduction": 600,
+      "net": 27235
+    },
+    "synthetic": true
+  },
+  {
+    "id": "edited",
+    "label": "Edited amount (synthetic)",
+    "module": "payslip",
+    "values": {
+      "name": "Ruma Islam",
+      "emp_id": "SW-4828",
+      "month": "November 2026",
+      "basic": 13750,
+      "house": 6875,
+      "medical": 750,
+      "transport": 450,
+      "food": 1250,
+      "ot_hours": 36,
+      "ot_rate": 132.21,
+      "ot_amount": 4760,
+      "deduction": 600,
+      "net": 22791
+    },
+    "synthetic": true
+  },
+  {
+    "id": "blurry",
+    "label": "Unreadable photo (synthetic)",
+    "module": "payslip",
+    "values": {
+      "name": "Ruma Islam",
+      "emp_id": "SW-4828",
+      "month": "November 2026",
+      "basic": 13750,
+      "house": 6875,
+      "medical": 750,
+      "transport": 450,
+      "food": 1250,
+      "ot_hours": 36,
+      "ot_rate": 132.21,
+      "ot_amount": 4760,
+      "deduction": 600,
+      "net": 27235
+    },
+    "synthetic": true
+  }
+]

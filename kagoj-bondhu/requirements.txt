@@ -1,0 +1,13 @@
+# Tested with Python 3.12. Pin model dependencies for reproducible joblib loading.
+fastapi==0.142.2
+uvicorn[standard]==0.54.0
+pyyaml==6.0.3
+numpy==2.5.3
+pillow==12.3.0
+opencv-python-headless==5.0.0.93
+scikit-learn==1.9.1
+joblib==1.6.0
+pytest==9.1.1
+httpx==0.28.1
+python-dotenv==1.2.4
+# anthropic: optional, install separately if choosing that provider.
