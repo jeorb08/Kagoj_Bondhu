@@ -291,3 +291,7 @@ If a key has been committed or shared, revoke it, create a replacement and clean
 ## Next steps
 
 Potential next steps include current rule-pack verification, representative consented evaluation where permitted, confidence calibration, stronger name matching, reviewer workflow integration and production access controls. These are proposed improvements, not existing partnerships or deployed integrations.
+
+## Demo
+
+[▶ Watch the Kagoj Bondhu demo]([assets/demo.mp4](https://drive.google.com/file/d/1lUDwsQslYKHLC5hfXMZ9Sr6t2DKzrsKz/view?usp=sharing)
