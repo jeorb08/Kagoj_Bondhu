@@ -26,6 +26,260 @@ function verifyView(){
  <div class="actions"><button class="btn ghost" id="vdraft">${L('Draft re-upload request','আবার ছবি চাওয়ার খসড়া')}</button><button class="btn ghost" id="vdownload">${L('Download report','রিপোর্ট ডাউনলোড')}</button><button class="btn ghost" id="vlisten">${L('Listen','শুনুন')}</button></div><div id="vdraftbox" class="box" hidden></div></div>`:''}
  </section></div> ${typeof walletPanel === "function" ? walletPanel() : ""}</main>`;
 }
+async function downloadMainReportPDF() {
+  if (!state.checked || !state.result) {
+    toast(L(
+      'Run the document check first.',
+      'আগে কাগজটি যাচাই করুন।'
+    ));
+    return;
+  }
+
+  const w = window.open('', '_blank');
+
+  if (!w) {
+    toast(L(
+      'Allow pop-ups to save the PDF.',
+      'PDF সংরক্ষণ করতে পপ-আপের অনুমতি দিন।'
+    ));
+    return;
+  }
+
+  const r = state.result;
+  const module = state.view;
+  const bn = state.lang === 'bn';
+  const label = (en, bangla) => bn ? bangla : en;
+
+  // Convert already-formatted screen text into safe printable text.
+  const plain = value => {
+    const doc = new DOMParser().parseFromString(
+      String(value ?? ''),
+      'text/html'
+    );
+    return doc.body.textContent || '';
+  };
+
+  const clean = value => esc(plain(value));
+
+  const inputRows = fieldsOf(module).map(field => `
+    <tr>
+      <td>${clean(field.label)}</td>
+      <td>${clean(showVal(field, state.vals[field.k]))}</td>
+    </tr>
+  `).join('');
+
+  const calculationRows = (r.lines || []).map(line => `
+    <tr>
+      <td>
+        ${clean(line[0])}
+        ${line[2] ? `<small>${clean(line[2])}</small>` : ''}
+      </td>
+      <td>${clean(line[1])}</td>
+    </tr>
+  `).join('');
+
+  const generated = new Date().toLocaleString(
+    bn ? 'bn-BD' : 'en-GB',
+    { timeZone: 'Asia/Dhaka' }
+  );
+
+  const fontURL = new URL('/fonts/fonts.css', location.href).href;
+
+  w.document.open();
+  w.document.write(`
+    <!DOCTYPE html>
+    <html lang="${bn ? 'bn' : 'en'}">
+    <head>
+      <meta charset="utf-8">
+      <title>Kagoj-Bondhu-${module}-Report</title>
+      <link rel="stylesheet" href="${esc(fontURL)}">
+
+      <style>
+        @page { size: A4; margin: 16mm; }
+        * { box-sizing: border-box; }
+
+        body {
+          font-family: 'Hind Siliguri', Arial, sans-serif;
+          color: #172b23;
+          background: white;
+          font-size: 12pt;
+          line-height: 1.6;
+          margin: 0;
+        }
+
+        header {
+          border-bottom: 3px solid #0d6b4d;
+          padding-bottom: 12px;
+          margin-bottom: 20px;
+        }
+
+        h1 { font-size: 24pt; margin: 0; color: #0d4a37; }
+        h2 { font-size: 16pt; margin: 20px 0 8px; break-after: avoid; }
+        p { margin: 8px 0; overflow-wrap: anywhere; }
+        small { display: block; color: #52645b; }
+
+        .meta { color: #52645b; font-size: 10pt; }
+
+        .summary {
+          border: 1px solid #becdc3;
+          border-left: 5px solid #0d6b4d;
+          padding: 14px;
+          margin: 18px 0;
+        }
+
+        .amount { font-size: 25pt; font-weight: bold; }
+
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          table-layout: fixed;
+        }
+
+        th, td {
+          border: 1px solid #d4ddd7;
+          padding: 8px 10px;
+          text-align: left;
+          vertical-align: top;
+          overflow-wrap: anywhere;
+        }
+
+        th { background: #edf4ef; }
+        thead { display: table-header-group; }
+        tr { break-inside: avoid; }
+
+        .footer {
+          border-top: 1px solid #d4ddd7;
+          margin-top: 24px;
+          padding-top: 12px;
+          font-size: 10pt;
+          color: #52645b;
+        }
+
+        .toolbar {
+          background: #edf4ef;
+          padding: 12px;
+          margin-bottom: 20px;
+        }
+
+        button { padding: 10px 16px; font: inherit; cursor: pointer; }
+
+        @media screen {
+          body { max-width: 850px; margin: 24px auto; padding: 20px; }
+        }
+
+        @media print {
+          .toolbar { display: none; }
+        }
+      </style>
+    </head>
+
+    <body>
+      <div class="toolbar">
+        <button onclick="window.print()">
+          ${label('Print / Save as PDF', 'প্রিন্ট / PDF হিসেবে সংরক্ষণ')}
+        </button>
+        <p>${label(
+          'Choose “Save as PDF” as the destination.',
+          'Destination থেকে “Save as PDF” নির্বাচন করুন।'
+        )}</p>
+      </div>
+
+      <header>
+        <h1>${label('Kagoj Bondhu', 'কাগজ বন্ধু')}</h1>
+        <h2>${clean(MODS[module].title())}</h2>
+
+        <p class="meta">
+          ${label('Generated', 'তৈরির সময়')}: ${esc(generated)}
+          · ${label('Bangladesh time', 'বাংলাদেশ সময়')}
+        </p>
+
+        <p class="meta">
+          ${state.readState === 'live'
+            ? label(
+                'Source: AI-extracted fields, reviewed by the user.',
+                'উৎস: এআইয়ের পড়া তথ্য, ব্যবহারকারী পর্যালোচনা করেছেন।'
+              )
+            : label(
+                'Source: sample/demo values, reviewed by the user.',
+                'উৎস: নমুনা/ডেমো তথ্য, ব্যবহারকারী পর্যালোচনা করেছেন।'
+              )
+          }
+        </p>
+      </header>
+
+      <section class="summary">
+        ${r.bigNum != null
+          ? `<div class="amount">${clean(r.fmt(r.bigNum))}</div>`
+          : ''
+        }
+        <h2>${clean(r.head)}</h2>
+        <p>${clean(r.explain)}</p>
+      </section>
+
+      <h2>${label('Confirmed inputs', 'নিশ্চিত করা তথ্য')}</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>${label('Field', 'তথ্য')}</th>
+            <th>${label('Value', 'মান')}</th>
+          </tr>
+        </thead>
+        <tbody>${inputRows}</tbody>
+      </table>
+
+      <h2>${label('Calculation breakdown', 'হিসাবের বিস্তারিত')}</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>${label('Calculation', 'হিসাব')}</th>
+            <th>${label('Result', 'ফলাফল')}</th>
+          </tr>
+        </thead>
+        <tbody>${calculationRows}</tbody>
+      </table>
+
+      ${r.next ? `
+        <h2>${label('Suggested next step', 'পরবর্তী করণীয়')}</h2>
+        <p>${clean(r.next)}</p>
+      ` : ''}
+
+      ${r.rule ? `
+        <h2>${label('Rule source', 'নিয়মের উৎস')}</h2>
+        <p class="meta">${clean(r.rule)}</p>
+      ` : ''}
+
+      <div class="footer">
+        ${label(
+          'Prototype report using the selected rules and confirmed inputs. Rules may contain historical or simplified demo assumptions. This is not an authenticity certificate, proof of fraud, or legal or financial advice.',
+          'নির্বাচিত নিয়ম ও নিশ্চিত করা তথ্যের ভিত্তিতে তৈরি প্রোটোটাইপ রিপোর্ট। নিয়মে পুরোনো বা সরলীকৃত ডেমো শর্ত থাকতে পারে। এটি সত্যতার সনদ, প্রতারণার প্রমাণ বা আইনি কিংবা আর্থিক পরামর্শ নয়।'
+        )}
+      </div>
+    </body>
+    </html>
+  `);
+  w.document.close();
+
+  if (w.document.readyState !== 'complete') {
+    await new Promise(resolve => {
+      w.addEventListener('load', resolve, { once: true });
+    });
+  }
+
+  await w.document.fonts.ready;
+
+  if (!w.closed) {
+    w.focus();
+    w.print();
+  }
+}
+
+document.addEventListener('click', event => {
+  if (event.target.closest('[data-act="download-main-pdf"]')) {
+    downloadMainReportPDF();
+  }
+});
 async function loadVSample(id){
  if(vs.busy)return;
  const epoch=++vs.epoch;
