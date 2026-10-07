@@ -5,39 +5,97 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Kagoj Bondhu — কাগজ বন্ধু</title>
 <link rel="stylesheet" href="/fonts/fonts.css">
+
 <style>
 :root{
-  --bg:#eef1ec; --surface:#ffffff; --ink:#14201b; --muted:#5b6a62; --line:#d3dbd2;
-  --btn:#0d4a37; --btn-ink:#ffffff; --green:#0d6b4d; --green-soft:#dcefe6;
-  --red:#c62839; --red-soft:#fbe4e6; --amber:#a86a00; --amber-soft:#fff0cc; --hi:#ffd84d;
-  --paper:#fffdf6; --paper-ink:#26261f; --pen:#d02a3b;
+  --bg:#eef1ec;
+  --surface:#ffffff;
+  --ink:#14201b;
+  --muted:#5b6a62;
+  --line:#d3dbd2;
+  --btn:#0d4a37;
+  --btn-ink:#ffffff;
+  --green:#0d6b4d;
+  --green-soft:#dcefe6;
+  --red:#c62839;
+  --red-soft:#fbe4e6;
+  --amber:#a86a00;
+  --amber-soft:#fff0cc;
+  --hi:#ffd84d;
+  --paper:#fffdf6;
+  --paper-ink:#26261f;
+  --pen:#d02a3b;
   --khata:#a3212f;
   box-sizing:border-box;
-  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
 }
-@media (prefers-color-scheme: dark){
+
+@media(prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --bg:#0b1410; --surface:#13201a; --ink:#e8f0ea; --muted:#9db0a5; --line:#25362d;
-    --btn:#33b487; --btn-ink:#062017; --green:#4ed0a0; --green-soft:#12301f;
-    --red:#ff6b7d; --red-soft:#3a151b; --amber:#f2b44a; --amber-soft:#33270f;
+    --bg:#0b1410;
+    --surface:#13201a;
+    --ink:#e8f0ea;
+    --muted:#9db0a5;
+    --line:#25362d;
+    --btn:#33b487;
+    --btn-ink:#062017;
+    --green:#4ed0a0;
+    --green-soft:#12301f;
+    --red:#ff6b7d;
+    --red-soft:#3a151b;
+    --amber:#f2b44a;
+    --amber-soft:#33270f;
   }
 }
+
 :root[data-theme="dark"]{
-  --bg:#0b1410; --surface:#13201a; --ink:#e8f0ea; --muted:#9db0a5; --line:#25362d;
-  --btn:#33b487; --btn-ink:#062017; --green:#4ed0a0; --green-soft:#12301f;
-  --red:#ff6b7d; --red-soft:#3a151b; --amber:#f2b44a; --amber-soft:#33270f;
+  --bg:#0b1410;
+  --surface:#13201a;
+  --ink:#e8f0ea;
+  --muted:#9db0a5;
+  --line:#25362d;
+  --btn:#33b487;
+  --btn-ink:#062017;
+  --green:#4ed0a0;
+  --green-soft:#12301f;
+  --red:#ff6b7d;
+  --red-soft:#3a151b;
+  --amber:#f2b44a;
+  --amber-soft:#33270f;
 }
+
 *,*:before,*:after{box-sizing:border-box}
 html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px);height:100%}
-body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font-family:'Hind Siliguri',system-ui,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body{
+  margin:0;
+  min-height:100%;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Hind Siliguri',system-ui,sans-serif;
+  font-size:17px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
 button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
-h1,h2,h3{font-family:'Baloo Da 2','Hind Siliguri',sans-serif;line-height:1.15;margin:0;font-weight:800}
+h1,h2,h3{
+  font-family:'Baloo Da 2','Hind Siliguri',sans-serif;
+  line-height:1.15;
+  margin:0;
+  font-weight:800;
+}
 p{margin:0}
 :focus-visible{outline:3px solid var(--hi);outline-offset:2px;border-radius:6px}
 .wrap{max-width:1140px;margin:0 auto;padding:22px 20px 70px}
 
-/* header */
-.hdr{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--bg);border-bottom:1px solid var(--line)}
+/* Header */
+.hdr{
+  position:sticky;
+  top:env(safe-area-inset-top,0px);
+  z-index:30;
+  background:var(--bg);
+  border-bottom:1px solid var(--line);
+}
 .hdr-in{max-width:1140px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:14px}
 .brand{display:flex;align-items:center;gap:10px;margin-right:auto;text-align:left}
 .brand b{font-family:'Baloo Da 2',sans-serif;font-size:21px;font-weight:800;line-height:1}
@@ -48,11 +106,23 @@ p{margin:0}
 .sw{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:500;color:var(--muted)}
 .sw i{width:38px;height:22px;border-radius:999px;background:var(--line);position:relative;transition:background .2s}
 .sw i:after{content:'';position:absolute;left:3px;top:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:transform .2s}
-.sw.on i{background:var(--green)} .sw.on i:after{transform:translateX(16px)}
+.sw.on i{background:var(--green)}
+.sw.on i:after{transform:translateX(16px)}
 @media(max-width:640px){.sw span{display:none}.brand small{display:none}}
 
-/* buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 20px;border-radius:12px;font-weight:700;font-size:17px;border:2px solid transparent;transition:transform .12s}
+/* Buttons */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:10px 20px;
+  border-radius:12px;
+  font-weight:700;
+  font-size:17px;
+  border:2px solid transparent;
+  transition:transform .12s;
+}
 .btn:active{transform:scale(.97)}
 .btn.primary{background:var(--btn);color:var(--btn-ink)}
 .btn.ghost{border-color:var(--ink);color:var(--ink)}
@@ -60,7 +130,7 @@ p{margin:0}
 .btn:disabled{opacity:.45;cursor:not-allowed}
 .back{color:var(--muted);font-weight:600;padding:4px 0}
 
-/* hero */
+/* Hero */
 .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding:26px 0 40px}
 .hero h1{font-size:clamp(34px,5.4vw,62px);letter-spacing:-.01em}
 .lead{margin-top:16px;font-size:19px;color:var(--muted);max-width:34em}
@@ -71,18 +141,19 @@ p{margin:0}
 .hero-r .margin-note{right:-6px;bottom:-26px}
 @media(max-width:860px){.hero{grid-template-columns:1fr;gap:34px}}
 
-/* desk of documents */
+/* Document tiles */
 .sec{font-size:30px;margin:8px 0 18px}
 .desk{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;align-items:start}
 @media(max-width:980px){.desk{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:520px){.desk{grid-template-columns:1fr}}
-.tile{display:block;width:100%;text-align:left;position:relative;padding:22px 18px 22px;transition:transform .18s}
+.tile{display:block;width:100%;text-align:left;position:relative;padding:22px 18px;transition:transform .18s}
 .tile:hover{transform:translateY(-4px) rotate(-.6deg)}
 .tile h3{font-size:24px;margin-top:14px}
 .tile p{font-size:15px;line-height:1.4;margin-top:4px}
 .tile .who{display:inline-block;margin-top:12px;font-size:14px;font-weight:600;padding:2px 10px;border-radius:999px;background:var(--hi);color:#2b2500}
 .tile .ln{display:block;height:6px;border-radius:3px;background:currentColor;opacity:.13;margin:7px 0}
-.tile .ln:nth-child(2){width:72%}.tile .ln:nth-child(3){width:48%}
+.tile .ln:nth-child(2){width:72%}
+.tile .ln:nth-child(3){width:48%}
 .t-payslip{background:var(--paper);color:var(--paper-ink);box-shadow:0 10px 24px -12px rgba(0,0,0,.45);margin-top:0}
 .t-payslip:before{content:'';position:absolute;top:-10px;left:50%;width:70px;height:22px;transform:translateX(-50%) rotate(-3deg);background:rgba(255,216,77,.75)}
 .t-loan{background:var(--paper);color:var(--paper-ink);box-shadow:0 10px 24px -12px rgba(0,0,0,.45);margin-top:18px;border-right:3px dashed #b9b19a;border-radius:2px 0 0 2px}
@@ -90,25 +161,32 @@ p{margin:0}
 .t-khata:before{content:'';position:absolute;left:12px;top:0;bottom:0;border-left:3px dotted rgba(255,255,255,.55)}
 .t-khata .ln{background:#fff;opacity:.3}
 .t-khata .who{background:#f5e3a8}
-.t-bill{background:var(--paper);color:var(--paper-ink);margin-top:22px;padding-bottom:34px;box-shadow:0 10px 24px -12px rgba(0,0,0,.45);
+.t-bill{
+  background:var(--paper);
+  color:var(--paper-ink);
+  margin-top:22px;
+  padding-bottom:34px;
+  box-shadow:0 10px 24px -12px rgba(0,0,0,.45);
   -webkit-mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/16px 51% repeat-x,linear-gradient(#000 0 0) top/100% 52% no-repeat;
-  mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/16px 51% repeat-x,linear-gradient(#000 0 0) top/100% 52% no-repeat}
+  mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/16px 51% repeat-x,linear-gradient(#000 0 0) top/100% 52% no-repeat;
+}
 .tile .ico{font-size:30px;line-height:1}
 .badge-hero{position:absolute;top:10px;right:12px;font-family:'Caveat','Galada',cursive;font-size:22px;color:var(--pen);transform:rotate(6deg)}
 
-/* how it works */
+/* How it works */
 .how{margin-top:64px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;border-top:2px solid var(--ink);padding-top:26px}
 .how h2{font-size:clamp(28px,4vw,42px)}
 .how p.s{margin-top:12px;color:var(--muted);max-width:30em}
 .seq{list-style:none;margin:0;padding:0;counter-reset:q}
 .seq li{counter-increment:q;display:grid;grid-template-columns:34px 1fr;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
 .seq li:before{content:counter(q);width:30px;height:30px;border-radius:50%;background:var(--ink);color:var(--bg);font-weight:700;display:grid;place-items:center;font-size:15px}
-.seq b{display:block;line-height:1.3}.seq span{font-size:15px;color:var(--muted)}
+.seq b{display:block;line-height:1.3}
+.seq span{font-size:15px;color:var(--muted)}
 .seq li.code:before{background:var(--pen)}
 @media(max-width:860px){.how{grid-template-columns:1fr}}
 .foot{margin-top:40px;font-size:14px;color:var(--muted);max-width:52em}
 
-/* module page */
+/* Module pages */
 .mod-top{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:6px}
 .mod-top h2{font-size:32px}
 .mod-top p{color:var(--muted);width:100%;margin-top:-4px}
@@ -127,13 +205,14 @@ p{margin:0}
 .box + .box{margin-top:14px}
 .note-line{font-size:14px;color:var(--muted);margin-top:10px}
 
-/* the desk / photographed paper */
+/* Document preview */
 .table{background:linear-gradient(140deg,#c4a67e,#a58760);border-radius:14px;padding:clamp(18px,4vw,34px);position:relative;overflow:hidden;box-shadow:inset 0 0 70px rgba(0,0,0,.28)}
-.photo{position:relative;transform:rotate(-1.1deg);background:var(--paper);color:var(--paper-ink);border-radius:3px;box-shadow:0 20px 30px -12px rgba(0,0,0,.5);}
+.photo{position:relative;transform:rotate(-1.1deg);background:var(--paper);color:var(--paper-ink);border-radius:3px;box-shadow:0 20px 30px -12px rgba(0,0,0,.5)}
 .photo img{display:block;width:100%;height:auto}
 .sheet{padding:22px 22px 28px;font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:14px;background:var(--paper);color:var(--paper-ink);position:relative}
 .sh-h{display:flex;gap:10px;align-items:center;border-bottom:2px dashed #b9b19a;padding-bottom:10px;margin-bottom:8px}
-.sh-h b{display:block;font-size:15px}.sh-h small{color:#7b7563}
+.sh-h b{display:block;font-size:15px}
+.sh-h small{color:#7b7563}
 .sq{width:26px;height:26px;background:#0d4a37;border-radius:4px}
 .pr{display:flex;justify-content:space-between;gap:12px;padding:3px 0}
 .pr b{font-weight:600;position:relative;padding:0 5px}
@@ -145,7 +224,6 @@ p{margin:0}
 .kh{display:grid;grid-template-columns:64px 1fr auto;gap:8px}
 .kh b{font-weight:700;position:relative;padding:0 6px}
 .kh.pd b:last-child{color:#1c7a3c}
-/* marks on the paper */
 [data-f].hl{background:rgba(255,216,77,.55);border-radius:3px}
 [data-f].low{background:rgba(255,170,0,.55);border-radius:3px}
 [data-f].flash{outline:2px solid #0d6b4d;outline-offset:2px}
@@ -157,7 +235,7 @@ p{margin:0}
 @keyframes scan{to{top:100%}}
 .cap{margin-top:12px;font-size:14px;color:var(--muted)}
 
-/* capture */
+/* Capture */
 .drop{display:block;box-sizing:border-box;width:100%;border:3px dashed var(--ink);border-radius:14px;padding:36px 22px;text-align:center;background:var(--surface);cursor:pointer}
 .drop.over{background:var(--hi)}
 .drop .big-ico{font-size:52px;line-height:1}
@@ -167,7 +245,7 @@ p{margin:0}
 .sample-card{display:flex;gap:14px;align-items:center;text-align:left;width:100%;padding:16px 18px;background:var(--hi);color:#2b2500;border-radius:10px;font-weight:700;font-size:19px}
 .sample-card small{display:block;font-weight:500;font-size:14px}
 
-/* read */
+/* Extraction */
 .rl{list-style:none;margin:0;padding:0}
 .rl li{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:10px 0;border-bottom:1px solid var(--line);opacity:0;transform:translateY(6px);transition:opacity .3s,transform .3s}
 .rl li.in{opacity:1;transform:none}
@@ -180,7 +258,7 @@ p{margin:0}
 .tag-ai{display:inline-block;font-size:14px;font-weight:600;background:var(--green-soft);color:var(--green);padding:1px 10px;border-radius:999px}
 .sim{margin-top:12px;font-size:14px;background:var(--amber-soft);color:var(--amber);border-radius:8px;padding:8px 12px}
 
-/* confirm */
+/* Confirmation */
 .fld{display:block;padding:10px 0;border-bottom:1px solid var(--line)}
 .fld .fl{display:flex;justify-content:space-between;gap:10px;font-size:15px;font-weight:500}
 .fld .fl em{font-style:normal;font-size:13px;color:var(--amber);font-weight:700}
@@ -189,27 +267,35 @@ p{margin:0}
 .inp input{flex:1;min-width:0;border:0;background:transparent;font:inherit;font-weight:700;font-size:19px;padding:8px 10px 8px 0;color:var(--ink);outline:none}
 .inp:focus-within{border-color:var(--btn)}
 .fld.low .inp{border-color:#e09a1a;background:var(--amber-soft)}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}
-@media(max-width:560px){.grid2{grid-template-columns:1fr}}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 20px}
+.grid2 .fld,.inp{min-width:0}
+.inp input{min-width:0;width:100%;box-sizing:border-box}
+select{font:inherit;padding:6px;border:1px solid var(--line);border-radius:6px}
+#vmodule{margin-left:10px}
+@media(max-width:600px){.grid2{grid-template-columns:1fr}}
 .live{margin-top:14px;padding:12px 14px;border-radius:8px;background:var(--green-soft);color:var(--ink);font-size:16px}
 .live b{font-family:'Baloo Da 2',sans-serif;font-size:22px}
 
-/* verdict */
+/* Results */
 .verdict{border-radius:10px;padding:20px 22px 22px;border:2px solid var(--ink);background:var(--surface)}
 .verdict.tone-bad{border-color:var(--red)}
 .verdict.tone-good{border-color:var(--green)}
 .verdict.tone-warn{border-color:var(--amber)}
 .v-eye{font-weight:600;font-size:15px;color:var(--muted)}
-.tone-bad .v-eye{color:var(--red)}.tone-good .v-eye{color:var(--green)}
+.tone-bad .v-eye{color:var(--red)}
+.tone-good .v-eye{color:var(--green)}
 .v-big{font-family:'Baloo Da 2','Hind Siliguri',sans-serif;font-weight:800;font-size:clamp(50px,9vw,84px);line-height:1.05;display:inline-block;margin-top:4px;padding:0 8px;background:linear-gradient(transparent 55%,var(--hi) 55% 92%,transparent 92%);color:#14201b}
 .v-head{font-family:'Baloo Da 2','Hind Siliguri',sans-serif;font-weight:700;font-size:24px;line-height:1.25;margin-top:6px}
 .v-ex{margin-top:12px;font-size:17px}
 .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
 .listen .wv{display:none;gap:2px;align-items:center;height:18px}
 .listen .wv i{width:3px;background:currentColor;border-radius:2px;animation:wv .7s ease-in-out infinite}
-.listen .wv i:nth-child(2){animation-delay:.15s}.listen .wv i:nth-child(3){animation-delay:.3s}.listen .wv i:nth-child(4){animation-delay:.45s}
+.listen .wv i:nth-child(2){animation-delay:.15s}
+.listen .wv i:nth-child(3){animation-delay:.3s}
+.listen .wv i:nth-child(4){animation-delay:.45s}
 @keyframes wv{0%,100%{height:5px}50%{height:18px}}
-.listen.on .wv{display:inline-flex}.listen.on .ic{display:none}
+.listen.on .wv{display:inline-flex}
+.listen.on .ic{display:none}
 .trust{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;font-size:14px;color:var(--muted)}
 .trust span{border:1.5px solid var(--line);border-radius:999px;padding:1px 12px}
 table.calc{width:100%;border-collapse:collapse;font-size:16px}
@@ -222,7 +308,9 @@ table.calc tr:last-child td{border-bottom:0}
 .bar-track{position:relative;height:26px;background:var(--bg);border-radius:6px}
 .bar-fill{height:100%;border-radius:6px;width:0;animation:grow .9s cubic-bezier(.2,.8,.2,1) forwards}
 @keyframes grow{to{width:var(--w)}}
-.bar-fill.bad{background:var(--red)}.bar-fill.good{background:var(--green)}.bar-fill.warn{background:#e09a1a}
+.bar-fill.bad{background:var(--red)}
+.bar-fill.good{background:var(--green)}
+.bar-fill.warn{background:#e09a1a}
 .bar-t{font-weight:700;text-align:right}
 .marker{position:absolute;top:-5px;bottom:-5px;border-left:2.5px dashed var(--ink)}
 .marker em{position:absolute;top:100%;left:4px;font-style:normal;font-size:12px;color:var(--muted);white-space:nowrap}
@@ -234,343 +322,1861 @@ table.calc tr:last-child td{border-bottom:0}
 .chip:hover{background:var(--hi);color:#2b2500;border-color:var(--hi)}
 .answer{margin-top:12px;background:var(--bg);border-radius:8px;padding:12px 14px;min-height:54px}
 .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:10px;font-size:15px;z-index:60;max-width:90vw;text-align:center}
+
 body.low *{animation:none!important;transition:none!important}
 body.low .bar-fill{width:var(--w)}
 body.low .table{background:#b59a74;box-shadow:none}
 body.low [data-f].flag:after{clip-path:none}
 body.low .margin-note{animation:none}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.bar-fill{width:var(--w)}}
 
-.grid2{grid-template-columns:repeat(2,minmax(0,1fr))}.grid2 .fld,.inp{min-width:0}.inp input{min-width:0;width:100%;box-sizing:border-box}select{font:inherit;padding:6px;border:1px solid var(--line);border-radius:6px}#vmodule{margin-left:10px}@media(max-width:600px){.grid2{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .bar-fill{width:var(--w)}
+}
 </style>
 </head>
+
 <body>
 <div id="app"></div>
+
+<!-- Consent wrapper must load before the application scripts. -->
+<script src="/privacy.js"></script>
+
 <script>
 const $=(s,r=document)=>r.querySelector(s);
-const state={lang:'bn',low:false,view:'home',step:1,vals:{},conf:{},upload:null,readDone:false,readState:'sample',readError:'',result:null,speaking:false};
-/* Rule parameters. Defaults below; overwritten from GET /api/rules (backend/app/rules/packs/*.yaml) when the backend is reachable. */
-const RULES={payslip:{monthly_divisor:208,overtime_multiplier:2},loan:{guideline_cap_percent:24},bill:{vat_percent:5,slabs:[[75,5.26],[125,7.20],[100,7.59],[100,8.02],[200,12.67],[Infinity,14.61]]},khata:{overdue_days:60,warning_days:30}};
-function applyRules(j){for(const m of ['payslip','loan','bill','khata']){if(!j[m])continue;const {source,slabs,...rest}=j[m];Object.assign(RULES[m],rest);if(slabs)RULES[m].slabs=slabs.map(x=>[x.units==null?Infinity:x.units,x.rate])}}
-fetch('/api/rules').then(r=>r.ok?r.json():null).then(j=>{if(j){applyRules(j);state.backend=true}}).catch(()=>{});
+
+const state={
+  lang:'bn',
+  low:false,
+  view:'home',
+  step:1,
+  vals:{},
+  conf:{},
+  upload:null,
+  readDone:false,
+  readState:'sample',
+  readError:'',
+  result:null,
+  speaking:false
+};
+
+/* Defaults are replaced by backend rule-pack parameters when available. */
+const RULES={
+  payslip:{monthly_divisor:208,overtime_multiplier:2},
+  loan:{guideline_cap_percent:24},
+  bill:{
+    vat_percent:5,
+    slabs:[
+      [75,5.26],
+      [125,7.20],
+      [100,7.59],
+      [100,8.02],
+      [200,12.67],
+      [Infinity,14.61]
+    ]
+  },
+  khata:{overdue_days:60,warning_days:30}
+};
+
+function applyRules(j){
+  for(const m of ['payslip','loan','bill','khata']){
+    if(!j[m])continue;
+    const {source,slabs,...rest}=j[m];
+    Object.assign(RULES[m],rest);
+    if(slabs){
+      RULES[m].slabs=slabs.map(x=>[
+        x.units==null?Infinity:x.units,
+        x.rate
+      ]);
+    }
+  }
+}
+
+fetch('/api/rules')
+  .then(r=>r.ok?r.json():null)
+  .then(j=>{
+    if(j){
+      applyRules(j);
+      state.backend=true;
+    }
+  })
+  .catch(()=>{});
+
 let timers=[];
+
 const L=(en,bn)=>state.lang==='bn'?bn:en;
 const BN='০১২৩৪৫৬৭৮৯';
-const N=v=>{const s=String(v);return state.lang==='bn'?s.replace(/\d/g,d=>BN[d]):s};
-const money=(v,d=0)=>'৳'+N(Number(v).toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d}));
+
+const N=v=>{
+  const s=String(v);
+  return state.lang==='bn'?s.replace(/\d/g,d=>BN[d]):s;
+};
+
+const money=(v,d=0)=>'৳'+N(
+  Number(v).toLocaleString('en-US',{
+    minimumFractionDigits:d,
+    maximumFractionDigits:d
+  })
+);
+
 const pct=(v,d=1)=>N(Number(v).toFixed(d))+'%';
 const rnd=v=>N(Math.round(v).toLocaleString('en-US'));
-const kb=n=>n>1048576?N((n/1048576).toFixed(1))+' MB':N(Math.round(n/1024))+' KB';
+const kb=n=>n>1048576
+  ?N((n/1048576).toFixed(1))+' MB'
+  :N(Math.round(n/1024))+' KB';
 
 const TODAY='2026-09-30';
 const days=iso=>Math.round((new Date(TODAY)-new Date(iso))/864e5);
-const MON_EN=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-const MON_BN=['জানু','ফেব','মার্চ','এপ্রি','মে','জুন','জুলাই','আগস্ট','সেপ্টে','অক্টো','নভে','ডিসে'];
-const dfmt=iso=>{const [y,m,d]=iso.split('-').map(Number);return state.lang==='bn'?N(d)+' '+MON_BN[m-1]:d+' '+MON_EN[m-1]};
-const PEOPLE={karim:{en:'Karim',bn:'করিম',g:'m'},nasima:{en:'Nasima',bn:'নাসিমা',g:'f'},rahima:{en:'Rahima',bn:'রহিমা',g:'f'},salam:{en:'Salam',bn:'সালাম',g:'m'},jamal:{en:'Jamal',bn:'জামাল',g:'m'}};
-const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+const MON_EN=[
+  'Jan','Feb','Mar','Apr','May','Jun',
+  'Jul','Aug','Sep','Oct','Nov','Dec'
+];
+
+const MON_BN=[
+  'জানু','ফেব','মার্চ','এপ্রি','মে','জুন',
+  'জুলাই','আগস্ট','সেপ্টে','অক্টো','নভে','ডিসে'
+];
+
+const dfmt=iso=>{
+  const [y,m,d]=iso.split('-').map(Number);
+  return state.lang==='bn'
+    ?N(d)+' '+MON_BN[m-1]
+    :d+' '+MON_EN[m-1];
+};
+
+const PEOPLE={
+  karim:{en:'Karim',bn:'করিম',g:'m'},
+  nasima:{en:'Nasima',bn:'নাসিমা',g:'f'},
+  rahima:{en:'Rahima',bn:'রহিমা',g:'f'},
+  salam:{en:'Salam',bn:'সালাম',g:'m'},
+  jamal:{en:'Jamal',bn:'জামাল',g:'m'}
+};
+
+const esc=x=>String(x??'').replace(
+  /[&<>"']/g,
+  c=>({
+    '&':'&amp;',
+    '<':'&lt;',
+    '>':'&gt;',
+    '"':'&quot;',
+    "'":'&#39;'
+  }[c])
+);
+
 const pn=id=>esc(PEOPLE[id]?PEOPLE[id][state.lang]:id);
-const KH_SAMPLE=[['2026-07-03','karim',1200,.98,'b'],['2026-07-19','nasima',3100,.96,'b'],['2026-08-12','karim',1500,.71,'b'],['2026-08-15','rahima',850,.94,'b'],['2026-08-20','salam',2300,.97,'b'],['2026-09-02','salam',500,.95,'p'],['2026-09-10','jamal',640,.93,'b'],['2026-09-20','karim',1500,.97,'b']];
+
+const KH_SAMPLE=[
+  ['2026-07-03','karim',1200,.98,'b'],
+  ['2026-07-19','nasima',3100,.96,'b'],
+  ['2026-08-12','karim',1500,.71,'b'],
+  ['2026-08-15','rahima',850,.94,'b'],
+  ['2026-08-20','salam',2300,.97,'b'],
+  ['2026-09-02','salam',500,.95,'p'],
+  ['2026-09-10','jamal',640,.93,'b'],
+  ['2026-09-20','karim',1500,.97,'b']
+];
+
 let KH=KH_SAMPLE.map(e=>e.slice());
 
-/* ---------- module definitions ---------- */
-const MODS={
-  payslip:{ico:'🧾',cls:'t-payslip',title:()=>L('Payslip check','বেতন-স্লিপ যাচাই'),sub:()=>L('Is your overtime paid correctly?','ওভারটাইম কি ঠিকঠাক পেয়েছেন?'),who:()=>L('For factory workers','কারখানার শ্রমিকদের জন্য'),sample:()=>L('Use a sample payslip','নমুনা পে-স্লিপ ব্যবহার করুন')},
-  loan:{ico:'💸',cls:'t-loan',title:()=>L('Loan truth','ঋণের আসল সুদ'),sub:()=>L('What does your loan really cost per year?','আপনার ঋণে বছরে আসলে কত সুদ?'),who:()=>L('For borrowers','ঋণগ্রহীতাদের জন্য'),sample:()=>L('Use a sample loan slip','নমুনা ঋণের স্লিপ ব্যবহার করুন')},
-  khata:{ico:'📒',cls:'t-khata',title:()=>L('Khata reader','খাতা পাঠক'),sub:()=>L('Turn your credit notebook into numbers.','বাকির খাতা হয়ে যাক হিসাব।'),who:()=>L('For shopkeepers','দোকানদারদের জন্য'),sample:()=>L('Use a sample ledger page','নমুনা খাতার পাতা ব্যবহার করুন')},
-  bill:{ico:'💡',cls:'t-bill',title:()=>L('Bill checker','বিদ্যুৎ বিল যাচাই'),sub:()=>L('Is this the right electricity bill?','বিলটা কি ঠিক আছে?'),who:()=>L('For households','পরিবারের জন্য'),sample:()=>L('Use a sample bill','নমুনা বিল ব্যবহার করুন')}
-};
-const DEFS={
-  payslip:[['basic',8000,.99,'৳','Basic wage (monthly)','মূল মজুরি (মাসিক)'],['otHours',60,.87,'hrs','Overtime hours','ওভারটাইম ঘণ্টা'],['otPaid',3000,.95,'৳','Overtime amount paid','ওভারটাইম বাবদ পাওয়া টাকা']],
-  loan:[['principal',30000,.99,'৳','Loan amount','ঋণের পরিমাণ'],['flat',15,.96,'%','Printed rate (flat, per year)','ছাপানো সুদের হার (বার্ষিক, ফ্ল্যাট)'],['months',12,.98,'mo','Term in months','মেয়াদ (মাস)'],['inst',2875,.93,'৳','Monthly installment','মাসিক কিস্তি']],
-  bill:[['units',320,.97,'kWh','Units used','ব্যবহৃত ইউনিট'],['demand',84,.95,'৳','Demand charge','ডিমান্ড চার্জ'],['misc',450,.82,'৳','Adjustment / other','সমন্বয় / অন্যান্য'],['total',2862.8,.96,'৳','Total charged','মোট বিল']]
-};
-function fieldsOf(m){
-  if(m==='khata')return KH.map((e,i)=>({k:'e'+i,c:e[3],u:'৳',label:`${dfmt(e[0])} · ${pn(e[1])} · ${e[4]==='b'?L('credit','বাকি'):L('paid back','জমা')}`}));
-  return DEFS[m].map(d=>({k:d[0],c:['fallback','loading'].includes(state.readState)?0:(state.conf[d[0]]??d[2]),u:d[3],label:L(d[4],d[5])}));
-}
-function initVals(m){const o={};if(m==='khata')KH.forEach((e,i)=>o['e'+i]=e[2]);else DEFS[m].forEach(d=>o[d[0]]=d[1]);return o}
-const unitL=u=>u==='hrs'?L('hrs','ঘণ্টা'):u==='mo'?L('months','মাস'):u==='kWh'?L('units','ইউনিট'):u;
-const showVal=(f,v)=>v==null?L('Missing','অনুপস্থিত'):f.u==='৳'?money(v,v%1?2:0):N(v)+(f.u==='%'?'%':' '+unitL(f.u));
+/* ---------- Module definitions ---------- */
 
-/* ---------- rule engines (deterministic code, not AI) ---------- */
-function irr(P,inst,n){if(inst*n<=P)return 0;let lo=0,hi=1;for(let i=0;i<120;i++){const m=(lo+hi)/2;const pv=inst*(1-Math.pow(1+m,-n))/m;if(pv>P)lo=m;else hi=m}return(lo+hi)/2}
+const MODS={
+  payslip:{
+    ico:'🧾',
+    cls:'t-payslip',
+    title:()=>L('Payslip check','বেতন-স্লিপ যাচাই'),
+    sub:()=>L(
+      'Is your overtime paid correctly?',
+      'ওভারটাইম কি ঠিকঠাক পেয়েছেন?'
+    ),
+    who:()=>L('For factory workers','কারখানার শ্রমিকদের জন্য'),
+    sample:()=>L('Use a sample payslip','নমুনা পে-স্লিপ ব্যবহার করুন')
+  },
+  loan:{
+    ico:'💸',
+    cls:'t-loan',
+    title:()=>L('Loan truth','ঋণের আসল সুদ'),
+    sub:()=>L(
+      'What does your loan really cost per year?',
+      'আপনার ঋণে বছরে আসলে কত সুদ?'
+    ),
+    who:()=>L('For borrowers','ঋণগ্রহীতাদের জন্য'),
+    sample:()=>L('Use a sample loan slip','নমুনা ঋণের স্লিপ ব্যবহার করুন')
+  },
+  khata:{
+    ico:'📒',
+    cls:'t-khata',
+    title:()=>L('Khata reader','খাতা পাঠক'),
+    sub:()=>L(
+      'Turn your credit notebook into numbers.',
+      'বাকির খাতা হয়ে যাক হিসাব।'
+    ),
+    who:()=>L('For shopkeepers','দোকানদারদের জন্য'),
+    sample:()=>L('Use a sample ledger page','নমুনা খাতার পাতা ব্যবহার করুন')
+  },
+  bill:{
+    ico:'💡',
+    cls:'t-bill',
+    title:()=>L('Bill checker','বিদ্যুৎ বিল যাচাই'),
+    sub:()=>L(
+      'Is this the right electricity bill?',
+      'বিলটা কি ঠিক আছে?'
+    ),
+    who:()=>L('For households','পরিবারের জন্য'),
+    sample:()=>L('Use a sample bill','নমুনা বিল ব্যবহার করুন')
+  }
+};
+
+const DEFS={
+  payslip:[
+    ['basic',8000,.99,'৳','Basic wage (monthly)','মূল মজুরি (মাসিক)'],
+    ['otHours',60,.87,'hrs','Overtime hours','ওভারটাইম ঘণ্টা'],
+    ['otPaid',3000,.95,'৳','Overtime amount paid','ওভারটাইম বাবদ পাওয়া টাকা']
+  ],
+  loan:[
+    ['principal',30000,.99,'৳','Loan amount','ঋণের পরিমাণ'],
+    ['flat',15,.96,'%','Printed rate (flat, per year)','ছাপানো সুদের হার (বার্ষিক, ফ্ল্যাট)'],
+    ['months',12,.98,'mo','Term in months','মেয়াদ (মাস)'],
+    ['inst',2875,.93,'৳','Monthly installment','মাসিক কিস্তি']
+  ],
+  bill:[
+    ['units',320,.97,'kWh','Units used','ব্যবহৃত ইউনিট'],
+    ['demand',84,.95,'৳','Demand charge','ডিমান্ড চার্জ'],
+    ['misc',450,.82,'৳','Adjustment / other','সমন্বয় / অন্যান্য'],
+    ['total',2862.8,.96,'৳','Total charged','মোট বিল']
+  ]
+};
+
+function fieldsOf(m){
+  if(m==='khata'){
+    return KH.map((e,i)=>({
+      k:'e'+i,
+      c:e[3],
+      u:'৳',
+      label:`${dfmt(e[0])} · ${pn(e[1])} · ${
+        e[4]==='b'?L('credit','বাকি'):L('paid back','জমা')
+      }`
+    }));
+  }
+
+  return DEFS[m].map(d=>({
+    k:d[0],
+    c:['fallback','loading'].includes(state.readState)
+      ?0
+      :(state.conf[d[0]]??d[2]),
+    u:d[3],
+    label:L(d[4],d[5])
+  }));
+}
+
+function initVals(m){
+  const o={};
+  if(m==='khata'){
+    KH.forEach((e,i)=>o['e'+i]=e[2]);
+  }else{
+    DEFS[m].forEach(d=>o[d[0]]=d[1]);
+  }
+  return o;
+}
+
+const unitL=u=>u==='hrs'
+  ?L('hrs','ঘণ্টা')
+  :u==='mo'
+    ?L('months','মাস')
+    :u==='kWh'
+      ?L('units','ইউনিট')
+      :u;
+
+const showVal=(f,v)=>v==null
+  ?L('Missing','অনুপস্থিত')
+  :f.u==='৳'
+    ?money(v,v%1?2:0)
+    :N(v)+(f.u==='%'?'%':' '+unitL(f.u));
+
+/* ---------- Rule/result helpers ---------- */
+
+function irr(P,inst,n){
+  if(inst*n<=P)return 0;
+  let lo=0,hi=1;
+
+  for(let i=0;i<120;i++){
+    const m=(lo+hi)/2;
+    const pv=inst*(1-Math.pow(1+m,-n))/m;
+    if(pv>P)lo=m;
+    else hi=m;
+  }
+
+  return(lo+hi)/2;
+}
+
 function khataGroup(v){
   const acc={};
-  KH.forEach((e,i)=>{const a=acc[e[1]]||(acc[e[1]]={id:e[1],bal:0,oldest:null});a.bal+=e[4]==='b'?v['e'+i]:-v['e'+i];if(e[4]==='b'&&(!a.oldest||e[0]<a.oldest))a.oldest=e[0]});
-  return Object.values(acc).filter(a=>a.bal>0).map(a=>({...a,age:days(a.oldest)})).sort((x,y)=>y.bal-x.bal);
+
+  KH.forEach((e,i)=>{
+    const a=acc[e[1]]||(acc[e[1]]={
+      id:e[1],
+      bal:0,
+      oldest:null
+    });
+
+    a.bal+=e[4]==='b'?v['e'+i]:-v['e'+i];
+
+    if(e[4]==='b'&&(!a.oldest||e[0]<a.oldest)){
+      a.oldest=e[0];
+    }
+  });
+
+  return Object.values(acc)
+    .filter(a=>a.bal>0)
+    .map(a=>({...a,age:days(a.oldest)}))
+    .sort((x,y)=>y.bal-x.bal);
 }
+
 function compute(m,v){
   const r=state.checked?.result;
-  if(!r)return {tone:'warn',flagKeys:[],bigNum:null,fmt:money,head:L('Confirm the fields, then run the check','তথ্য নিশ্চিত করে যাচাই করুন'),explain:'',lines:[],chart:{max:1,bars:[]}};
-  const source=state.checked.rule?.source||'';
-  let out={tone:'good',flagKeys:[],bigNum:null,fmt:money,head:L('No mismatch in these checks','এই যাচাইয়ে অমিল নেই'),explain:'',lines:[],chart:{max:1,bars:[]},rule:esc(source),next:L('Check the assumptions and ask the issuer about any difference.','শর্তগুলো দেখুন এবং পার্থক্য থাকলে কাগজদাতাকে জিজ্ঞেস করুন।'),note:''};
-  if(m==='payslip'){
-    out={...out,tone:r.flagged?'bad':'good',flagKeys:r.flagged?['otPaid']:[],bigNum:r.difference,
-      head:L('possible overtime shortfall','ওভারটাইমে সম্ভাব্য ঘাটতি'),
-      explain:L(`Under the selected rule, overtime is ${money(r.shouldPay,2)}; the slip shows ${money(r.paid,2)}. Eligible allowances and the applicable divisor must be confirmed.`,`নির্বাচিত নিয়মে ওভারটাইম ${money(r.shouldPay,2)}; স্লিপে আছে ${money(r.paid,2)}। প্রযোজ্য ভাতা ও ভাগ করার সংখ্যা নিশ্চিত করুন।`),
-      lines:[[L('Hourly wage','ঘণ্টা মজুরি'),money(r.hourlyWage,2)],[L('Overtime rate','ওভারটাইম হার'),money(r.overtimeRate,2)],[L('Calculated overtime','হিসাবে ওভারটাইম'),money(r.shouldPay,2)],[L('Paid','দেওয়া হয়েছে'),money(r.paid,2)]],
-      chart:{max:Math.max(1,r.paid,r.shouldPay),bars:[{l:L('Paid','দেওয়া'),v:r.paid,t:money(r.paid),c:'bad'},{l:L('Calculated','হিসাবে'),v:r.shouldPay,t:money(r.shouldPay),c:'good'}]}};
-  }else if(m==='loan'){
-    out={...out,tone:r.installmentMatchesPrinted?'warn':'bad',flagKeys:r.installmentMatchesPrinted?[]:['inst'],bigNum:r.effectiveYearlyRatePct,fmt:x=>pct(x,2),
-      head:L('effective annual rate','কার্যকর বার্ষিক সুদ'),
-      explain:L(`Printed flat rate: ${pct(v.flat)}. Annualized nominal rate: ${pct(r.nominalYearlyRatePct,2)}. Effective annual rate includes monthly compounding. Assumes equal month-end payments; this is not a legal-cap decision.`,`ছাপানো ফ্ল্যাট হার ${pct(v.flat)}। বার্ষিক নামমাত্র হার ${pct(r.nominalYearlyRatePct,2)}। কার্যকর বার্ষিক হারে মাসিক চক্রবৃদ্ধি ধরা আছে। সমান মাসশেষের কিস্তি ধরা হয়েছে; এটি আইনি সীমার সিদ্ধান্ত নয়।`),
-      lines:[[L('Total repayment','মোট ফেরত'),money(r.totalRepay)],[L('Extra over principal','আসলের অতিরিক্ত'),money(r.extraPaid)],[L('Monthly IRR','মাসিক IRR'),pct(r.monthlyRatePct,3)],[L('Annualized nominal','বার্ষিক নামমাত্র'),pct(r.nominalYearlyRatePct,2)],[L('Effective annual','কার্যকর বার্ষিক'),pct(r.effectiveYearlyRatePct,2)],[L('Expected installment','হিসাবে কিস্তি'),money(r.expectedInstallment,2)]],
-      chart:{max:Math.max(1,v.flat,r.effectiveYearlyRatePct),bars:[{l:L('Flat','ফ্ল্যাট'),v:v.flat,t:pct(v.flat),c:'good'},{l:L('Effective','কার্যকর'),v:r.effectiveYearlyRatePct,t:pct(r.effectiveYearlyRatePct),c:'warn'}]}};
-  }else if(m==='bill'){
-    out={...out,tone:r.flagged?'warn':'good',flagKeys:r.flagged?['total']:[],bigNum:r.difference,fmt:x=>money(x,2),head:L('difference from historical demo estimate','পুরোনো ডেমো হিসাবের সঙ্গে পার্থক্য'),
-      explain:L('February 2024 demo tariff. Adjustments, arrears, rebates and meter fees need separate review. A difference is not proof of overcharging.','ফেব্রুয়ারি ২০২৪-এর ডেমো ট্যারিফ। সমন্বয়, বকেয়া, ছাড় ও মিটার ফি আলাদা যাচাই প্রয়োজন। পার্থক্য মানেই অতিরিক্ত বিল নয়।'),
-      lines:[...r.slabs.map(x=>[`${N(x.from)}–${N(x.to)} kWh`,money(x.amount,2)]),[L('Demand','ডিমান্ড'),money(r.demand,2)],[L('VAT (demo 5%)','ভ্যাট (ডেমো ৫%)'),money(r.vat,2)],[L('Base estimate','মূল হিসাব'),money(r.shouldTotal,2)],[L('Printed total','ছাপানো মোট'),money(r.charged,2)],[L('Listed adjustment','ছাপানো সমন্বয়'),money(r.unexplainedAdjustment,2)]],
-      chart:{max:Math.max(1,r.shouldTotal,r.charged),bars:[{l:L('Base','মূল হিসাব'),v:r.shouldTotal,t:money(r.shouldTotal),c:'good'},{l:L('Printed','ছাপানো'),v:r.charged,t:money(r.charged),c:'warn'}]}};
-  }else{
-    const list=r.customers.map(c=>({id:c.name,bal:c.balance,age:c.ageDays,overdue:c.overdueBalance})),top=list[0]||{id:'',bal:0,age:0};
-    out={...out,tone:'warn',bigNum:r.totalOutstanding,list,top,over:list.filter(c=>c.overdue>0),head:L('total outstanding','মোট বাকি'),
-      explain:L(`${money(r.overdueAmount)} of remaining credit is older than ${RULES.khata.overdue_days} days. Payments settle oldest credit first. As of ${r.asOf}.`, `অবশিষ্ট বাকির ${money(r.overdueAmount)} ${N(RULES.khata.overdue_days)} দিনের বেশি পুরোনো। জমা আগে পুরোনো বাকি শোধ করে। হিসাবের তারিখ ${r.asOf}।`),
-      lines:list.map(c=>[pn(c.id),money(c.bal),L(`oldest unpaid credit: ${c.age} days`,`অপরিশোধিত পুরোনো বাকি: ${N(c.age)} দিন`)]),
-      chart:{max:Math.max(1,top.bal),bars:list.map(c=>({l:pn(c.id),v:c.bal,t:money(c.bal),c:c.overdue?'bad':'good'}))}};
+
+  if(!r){
+    return {
+      tone:'warn',
+      flagKeys:[],
+      bigNum:null,
+      fmt:money,
+      head:L(
+        'Confirm the fields, then run the check',
+        'তথ্য নিশ্চিত করে যাচাই করুন'
+      ),
+      explain:'',
+      lines:[],
+      chart:{max:1,bars:[]}
+    };
   }
+
+  const source=state.checked.rule?.source||'';
+
+  let out={
+    tone:'good',
+    flagKeys:[],
+    bigNum:null,
+    fmt:money,
+    head:L('No mismatch in these checks','এই যাচাইয়ে অমিল নেই'),
+    explain:'',
+    lines:[],
+    chart:{max:1,bars:[]},
+    rule:esc(source),
+    next:L(
+      'Check the assumptions and ask the issuer about any difference.',
+      'শর্তগুলো দেখুন এবং পার্থক্য থাকলে কাগজদাতাকে জিজ্ঞেস করুন।'
+    ),
+    note:''
+  };
+
+  if(m==='payslip'){
+    out={
+      ...out,
+      tone:r.flagged?'bad':'good',
+      flagKeys:r.flagged?['otPaid']:[],
+      bigNum:r.difference,
+      head:L('possible overtime shortfall','ওভারটাইমে সম্ভাব্য ঘাটতি'),
+      explain:L(
+        `Under the selected rule, overtime is ${money(r.shouldPay,2)}; the slip shows ${money(r.paid,2)}. Eligible allowances and the applicable divisor must be confirmed.`,
+        `নির্বাচিত নিয়মে ওভারটাইম ${money(r.shouldPay,2)}; স্লিপে আছে ${money(r.paid,2)}। প্রযোজ্য ভাতা ও ভাগ করার সংখ্যা নিশ্চিত করুন।`
+      ),
+      lines:[
+        [L('Hourly wage','ঘণ্টা মজুরি'),money(r.hourlyWage,2)],
+        [L('Overtime rate','ওভারটাইম হার'),money(r.overtimeRate,2)],
+        [L('Calculated overtime','হিসাবে ওভারটাইম'),money(r.shouldPay,2)],
+        [L('Paid','দেওয়া হয়েছে'),money(r.paid,2)]
+      ],
+      chart:{
+        max:Math.max(1,r.paid,r.shouldPay),
+        bars:[
+          {l:L('Paid','দেওয়া'),v:r.paid,t:money(r.paid),c:'bad'},
+          {l:L('Calculated','হিসাবে'),v:r.shouldPay,t:money(r.shouldPay),c:'good'}
+        ]
+      }
+    };
+  }else if(m==='loan'){
+    out={
+      ...out,
+      tone:r.installmentMatchesPrinted?'warn':'bad',
+      flagKeys:r.installmentMatchesPrinted?[]:['inst'],
+      bigNum:r.effectiveYearlyRatePct,
+      fmt:x=>pct(x,2),
+      head:L('effective annual rate','কার্যকর বার্ষিক সুদ'),
+      explain:L(
+        `Printed flat rate: ${pct(v.flat)}. Annualized nominal rate: ${pct(r.nominalYearlyRatePct,2)}. Effective annual rate includes monthly compounding. Assumes equal month-end payments; this is not a legal-cap decision.`,
+        `ছাপানো ফ্ল্যাট হার ${pct(v.flat)}। বার্ষিক নামমাত্র হার ${pct(r.nominalYearlyRatePct,2)}। কার্যকর বার্ষিক হারে মাসিক চক্রবৃদ্ধি ধরা আছে। সমান মাসশেষের কিস্তি ধরা হয়েছে; এটি আইনি সীমার সিদ্ধান্ত নয়।`
+      ),
+      lines:[
+        [L('Total repayment','মোট ফেরত'),money(r.totalRepay)],
+        [L('Extra over principal','আসলের অতিরিক্ত'),money(r.extraPaid)],
+        [L('Monthly IRR','মাসিক IRR'),pct(r.monthlyRatePct,3)],
+        [L('Annualized nominal','বার্ষিক নামমাত্র'),pct(r.nominalYearlyRatePct,2)],
+        [L('Effective annual','কার্যকর বার্ষিক'),pct(r.effectiveYearlyRatePct,2)],
+        [L('Expected installment','হিসাবে কিস্তি'),money(r.expectedInstallment,2)]
+      ],
+      chart:{
+        max:Math.max(1,v.flat,r.effectiveYearlyRatePct),
+        bars:[
+          {l:L('Flat','ফ্ল্যাট'),v:v.flat,t:pct(v.flat),c:'good'},
+          {l:L('Effective','কার্যকর'),v:r.effectiveYearlyRatePct,t:pct(r.effectiveYearlyRatePct),c:'warn'}
+        ]
+      }
+    };
+  }else if(m==='bill'){
+    out={
+      ...out,
+      tone:r.flagged?'warn':'good',
+      flagKeys:r.flagged?['total']:[],
+      bigNum:r.difference,
+      fmt:x=>money(x,2),
+      head:L(
+        'difference from historical demo estimate',
+        'পুরোনো ডেমো হিসাবের সঙ্গে পার্থক্য'
+      ),
+      explain:L(
+        'February 2024 demo tariff. Adjustments, arrears, rebates and meter fees need separate review. A difference is not proof of overcharging.',
+        'ফেব্রুয়ারি ২০২৪-এর ডেমো ট্যারিফ। সমন্বয়, বকেয়া, ছাড় ও মিটার ফি আলাদা যাচাই প্রয়োজন। পার্থক্য মানেই অতিরিক্ত বিল নয়।'
+      ),
+      lines:[
+        ...r.slabs.map(x=>[
+          `${N(x.from)}–${N(x.to)} kWh`,
+          money(x.amount,2)
+        ]),
+        [L('Demand','ডিমান্ড'),money(r.demand,2)],
+        [L('VAT (demo 5%)','ভ্যাট (ডেমো ৫%)'),money(r.vat,2)],
+        [L('Base estimate','মূল হিসাব'),money(r.shouldTotal,2)],
+        [L('Printed total','ছাপানো মোট'),money(r.charged,2)],
+        [L('Listed adjustment','ছাপানো সমন্বয়'),money(r.unexplainedAdjustment,2)]
+      ],
+      chart:{
+        max:Math.max(1,r.shouldTotal,r.charged),
+        bars:[
+          {l:L('Base','মূল হিসাব'),v:r.shouldTotal,t:money(r.shouldTotal),c:'good'},
+          {l:L('Printed','ছাপানো'),v:r.charged,t:money(r.charged),c:'warn'}
+        ]
+      }
+    };
+  }else{
+    const list=r.customers.map(c=>({
+      id:c.name,
+      bal:c.balance,
+      age:c.ageDays,
+      overdue:c.overdueBalance
+    }));
+
+    const top=list[0]||{id:'',bal:0,age:0};
+
+    out={
+      ...out,
+      tone:'warn',
+      bigNum:r.totalOutstanding,
+      list,
+      top,
+      over:list.filter(c=>c.overdue>0),
+      head:L('total outstanding','মোট বাকি'),
+      explain:L(
+        `${money(r.overdueAmount)} of remaining credit is older than ${RULES.khata.overdue_days} days. Payments settle oldest credit first. As of ${r.asOf}.`,
+        `অবশিষ্ট বাকির ${money(r.overdueAmount)} ${N(RULES.khata.overdue_days)} দিনের বেশি পুরোনো। জমা আগে পুরোনো বাকি শোধ করে। হিসাবের তারিখ ${r.asOf}।`
+      ),
+      lines:list.map(c=>[
+        pn(c.id),
+        money(c.bal),
+        L(
+          `oldest unpaid credit: ${c.age} days`,
+          `অপরিশোধিত পুরোনো বাকি: ${N(c.age)} দিন`
+        )
+      ]),
+      chart:{
+        max:Math.max(1,top.bal),
+        bars:list.map(c=>({
+          l:pn(c.id),
+          v:c.bal,
+          t:money(c.bal),
+          c:c.overdue?'bad':'good'
+        }))
+      }
+    };
+  }
+
   const ai=state.checked?.explanation;
-  if(ai){out.explain=esc(ai[state.lang]);out.next=esc(ai.next_step[state.lang]);out.aiMode=ai.mode;out.aiReason=ai.reason;}
-  out.speech=out.head+'। '+(ai?ai[state.lang]:out.explain);return out;
+
+  if(ai){
+    out.explain=esc(ai[state.lang]);
+    out.next=esc(ai.next_step[state.lang]);
+    out.aiMode=ai.mode;
+    out.aiReason=ai.reason;
+  }
+
+  out.speech=out.head+'। '+(ai?ai[state.lang]:out.explain);
+  return out;
 }
+
 async function checkConfirmed(){
   if(state.checking)return;
-  if(state.readState==='fallback'){toast(L('Reading failed. Retake or explicitly choose a sample.','পড়া যায়নি। আবার দিন অথবা নমুনা বেছে নিন।'));return}
-  const m=state.view,assessment=state.asOf||TODAY;
+
+  if(state.readState==='fallback'){
+    toast(L(
+      'Reading failed. Retake or explicitly choose a sample.',
+      'পড়া যায়নি। আবার দিন অথবা নমুনা বেছে নিন।'
+    ));
+    return;
+  }
+
+  const m=state.view;
+  const assessment=state.asOf||TODAY;
   let values={...state.vals};
-  if(m==='khata')values={entries:KH.map((e,i)=>({date:e[0],name:e[1],amount:state.vals['e'+i],kind:e[4]==='p'?'payment':'credit'}))};
-  if(Object.values(state.vals).some(v=>v===null||v===''||!Number.isFinite(Number(v)))){toast(L('Fill every missing value first.','আগে সব অনুপস্থিত মান দিন।'));return}
-  state.checking=true;const button=$('[data-act="to4"]');if(button){button.disabled=true;button.textContent=L('Checking and explaining…','যাচাই ও ব্যাখ্যা হচ্ছে…')}
+
+  if(m==='khata'){
+    values={
+      entries:KH.map((e,i)=>({
+        date:e[0],
+        name:e[1],
+        amount:state.vals['e'+i],
+        kind:e[4]==='p'?'payment':'credit'
+      }))
+    };
+  }
+
+  if(Object.values(state.vals).some(
+    v=>v===null||v===''||!Number.isFinite(Number(v))
+  )){
+    toast(L('Fill every missing value first.','আগে সব অনুপস্থিত মান দিন।'));
+    return;
+  }
+
+  state.checking=true;
+
+  const button=$('[data-act="to4"]');
+  if(button){
+    button.disabled=true;
+    button.textContent=L(
+      'Checking and explaining…',
+      'যাচাই ও ব্যাখ্যা হচ্ছে…'
+    );
+  }
+
   try{
-    const res=await fetch('/api/check',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({module:m,values,as_of:m==='khata'?(state.asOf||TODAY):null})});
-    const j=await res.json();if(!res.ok)throw new Error(typeof j.detail==='string'?j.detail:'Check the values');
-    const current=m==='khata'?{entries:KH.map((e,i)=>({date:e[0],name:e[1],amount:state.vals['e'+i],kind:e[4]==='p'?'payment':'credit'}))}:{...state.vals};
-    if(state.view!==m||JSON.stringify(current)!==JSON.stringify(values)||(m==='khata'&&(state.asOf||TODAY)!==assessment))return;state.checked=j;go(4);
-  }catch(e){toast(e.message||'Check service unavailable')}
-  finally{state.checking=false;if(state.step===3)render()}
+    const res=await fetch('/api/check',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        module:m,
+        values,
+        as_of:m==='khata'?(state.asOf||TODAY):null
+      })
+    });
+
+    const j=await res.json();
+
+    if(!res.ok){
+      throw new Error(
+        typeof j.detail==='string'?j.detail:'Check the values'
+      );
+    }
+
+    const current=m==='khata'
+      ?{
+        entries:KH.map((e,i)=>({
+          date:e[0],
+          name:e[1],
+          amount:state.vals['e'+i],
+          kind:e[4]==='p'?'payment':'credit'
+        }))
+      }
+      :{...state.vals};
+
+    if(
+      state.view!==m||
+      JSON.stringify(current)!==JSON.stringify(values)||
+      (m==='khata'&&(state.asOf||TODAY)!==assessment)
+    )return;
+
+    state.checked=j;
+    go(4);
+  }catch(e){
+    toast(e.message||'Check service unavailable');
+  }finally{
+    state.checking=false;
+    if(state.step===3)render();
+  }
 }
+
 function khataAsk(q){
-  const r=state.result,top=r.top,p=PEOPLE[top.id]||{g:'m'};
-  if(!top.id)return {t:L('No outstanding balance.','কোনো বাকি নেই।')};
-  if(q==='top')return{t:L(`${pn(top.id)} owes the most: ${money(top.bal)}, oldest credit ${N(top.age)} days ago.`,`সবচেয়ে বেশি বাকি ${pn(top.id)}-এর: ${money(top.bal)}, সবচেয়ে পুরোনো বাকি ${N(top.age)} দিন আগের।`)};
-  if(q==='over')return{t:r.over.length?L(`Overdue more than ${RULES.khata.overdue_days} days: ${r.over.map(a=>pn(a.id)+' '+money(a.bal)).join(', ')}.`,`${N(RULES.khata.overdue_days)} দিনের বেশি বাকি: ${r.over.map(a=>pn(a.id)+' '+money(a.bal)).join(', ')}।`):L(`Nobody is overdue by more than ${RULES.khata.overdue_days} days.`,`কারও বাকি ${N(RULES.khata.overdue_days)} দিনের বেশি পুরোনো নয়।`)};
-  const title=state.lang==='bn'?(p.g==='f'?'আপা':'ভাই'):(p.g==='f'?'apa':'bhai');
-  const t=L(`Assalamu alaikum ${pn(top.id)} ${title}, a gentle reminder about the ${money(top.bal)} due at our shop. Please pay when you can. Thank you!`,`আসসালামু আলাইকুম ${pn(top.id)} ${title}, দোকানের ${money(top.bal)} বাকির একটি বিনীত অনুস্মারক। সুবিধামতো পরিশোধ করলে কৃতজ্ঞ থাকব। ধন্যবাদ!`);
-  return{t,send:true};
+  const r=state.result;
+  const top=r.top;
+  const p=PEOPLE[top.id]||{g:'m'};
+
+  if(!top.id){
+    return {t:L('No outstanding balance.','কোনো বাকি নেই।')};
+  }
+
+  if(q==='top'){
+    return {
+      t:L(
+        `${pn(top.id)} owes the most: ${money(top.bal)}, oldest credit ${N(top.age)} days ago.`,
+        `সবচেয়ে বেশি বাকি ${pn(top.id)}-এর: ${money(top.bal)}, সবচেয়ে পুরোনো বাকি ${N(top.age)} দিন আগের।`
+      )
+    };
+  }
+
+  if(q==='over'){
+    return {
+      t:r.over.length
+        ?L(
+          `Overdue more than ${RULES.khata.overdue_days} days: ${r.over.map(a=>pn(a.id)+' '+money(a.bal)).join(', ')}.`,
+          `${N(RULES.khata.overdue_days)} দিনের বেশি বাকি: ${r.over.map(a=>pn(a.id)+' '+money(a.bal)).join(', ')}।`
+        )
+        :L(
+          `Nobody is overdue by more than ${RULES.khata.overdue_days} days.`,
+          `কারও বাকি ${N(RULES.khata.overdue_days)} দিনের বেশি পুরোনো নয়।`
+        )
+    };
+  }
+
+  const title=state.lang==='bn'
+    ?(p.g==='f'?'আপা':'ভাই')
+    :(p.g==='f'?'apa':'bhai');
+
+  const t=L(
+    `Assalamu alaikum ${pn(top.id)} ${title}, a gentle reminder about the ${money(top.bal)} due at our shop. Please pay when you can. Thank you!`,
+    `আসসালামু আলাইকুম ${pn(top.id)} ${title}, দোকানের ${money(top.bal)} বাকির একটি বিনীত অনুস্মারক। সুবিধামতো পরিশোধ করলে কৃতজ্ঞ থাকব। ধন্যবাদ!`
+  );
+
+  return {t,send:true};
 }
 
-/* ---------- paper documents ---------- */
-const row=(a,b,f)=>`<div class="pr"><span>${a}</span><b${f?` data-f="${f}"`:''}>${b}</b></div>`;
+/* ---------- Sample documents ---------- */
+
+const row=(a,b,f)=>`
+  <div class="pr">
+    <span>${a}</span>
+    <b${f?` data-f="${f}"`:''}>${b}</b>
+  </div>
+`;
+
 function paper(m){
-  if(m==='payslip')return`<div class="sheet"><div class="sh-h"><div class="sq"></div><div><b>SUNRISE APPARELS LTD.</b><small>Pay Slip, August 2026</small></div></div>${row('Name','Rina Akter')}${row('ID / Grade','SW-2291 / Grade 7')}<hr>${row('Basic','8,000','basic')}${row('House rent','4,000')}${row('Medical','750')}${row('Transport','450')}${row('Food','1,250')}<hr>${row('OT hours','60','otHours')}${row('OT rate','50.00')}${row('OT amount','3,000','otPaid')}<hr>${row('Advance (deduction)','(500)')}${row('NET PAY','16,950')}<div class="stamp">PAID</div></div>`;
-  if(m==='loan')return`<div class="sheet"><div class="sh-h"><div class="sq"></div><div><b>SHANTI MOHILA SAMITY</b><small>Loan agreement slip</small></div></div>${row('Member','Fatema Begum')}${row('Group / Center','Uttar Para / 07')}<hr>${row('Loan amount','30,000','principal')}${row('Service charge (flat)','15% p.a.','flat')}${row('Term','12 months','months')}<hr>${row('Installment','2,875 / month','inst')}${row('Total payable','34,500')}${row('First installment','05 Oct 2026')}<div class="stamp">APPROVED</div></div>`;
-  if(m==='bill')return`<div class="sheet"><div class="sh-h"><div class="sq"></div><div><b>PALLI BIDYUT SAMITY</b><small>Electricity bill, September 2026</small></div></div>${row('Consumer','Md. Abdul Hai')}${row('Meter no.','2201-7714-09')}<hr>${row('Units consumed','320','units')}${row('Energy charge','2,213.90')}${row('Demand charge','84.00','demand')}${row('VAT 5%','114.90')}${row('Adjustment / other','450.00','misc')}<hr>${row('TOTAL PAYABLE','2,862.80','total')}<div class="stamp">DUE 15 OCT</div></div>`;
-  return`<div class="notebook"><div class="nb-t">Lal Khata, 2026</div>${KH.map((e,i)=>`<div class="kh ${e[4]==='p'?'pd':''}"><span>${dfmtEN(e[0])}</span><span>${PEOPLE[e[1]].en}</span><b data-f="e${i}">${e[4]==='p'?'−':''}${e[2]}</b></div>`).join('')}</div>`;
-}
-const dfmtEN=iso=>{const [y,m,d]=iso.split('-').map(Number);return d+' '+MON_EN[m-1]};
+  if(m==='payslip'){
+    return `
+      <div class="sheet">
+        <div class="sh-h">
+          <div class="sq"></div>
+          <div>
+            <b>SUNRISE APPARELS LTD.</b>
+            <small>Pay Slip, August 2026</small>
+          </div>
+        </div>
+        ${row('Name','Rina Akter')}
+        ${row('ID / Grade','SW-2291 / Grade 7')}
+        <hr>
+        ${row('Basic','8,000','basic')}
+        ${row('House rent','4,000')}
+        ${row('Medical','750')}
+        ${row('Transport','450')}
+        ${row('Food','1,250')}
+        <hr>
+        ${row('OT hours','60','otHours')}
+        ${row('OT rate','50.00')}
+        ${row('OT amount','3,000','otPaid')}
+        <hr>
+        ${row('Advance (deduction)','(500)')}
+        ${row('NET PAY','16,950')}
+        <div class="stamp">PAID</div>
+      </div>
+    `;
+  }
 
-/* ---------- views ---------- */
+  if(m==='loan'){
+    return `
+      <div class="sheet">
+        <div class="sh-h">
+          <div class="sq"></div>
+          <div>
+            <b>SHANTI MOHILA SAMITY</b>
+            <small>Loan agreement slip</small>
+          </div>
+        </div>
+        ${row('Member','Fatema Begum')}
+        ${row('Group / Center','Uttar Para / 07')}
+        <hr>
+        ${row('Loan amount','30,000','principal')}
+        ${row('Service charge (flat)','15% p.a.','flat')}
+        ${row('Term','12 months','months')}
+        <hr>
+        ${row('Installment','2,875 / month','inst')}
+        ${row('Total payable','34,500')}
+        ${row('First installment','05 Oct 2026')}
+        <div class="stamp">APPROVED</div>
+      </div>
+    `;
+  }
+
+  if(m==='bill'){
+    return `
+      <div class="sheet">
+        <div class="sh-h">
+          <div class="sq"></div>
+          <div>
+            <b>PALLI BIDYUT SAMITY</b>
+            <small>Electricity bill, September 2026</small>
+          </div>
+        </div>
+        ${row('Consumer','Md. Abdul Hai')}
+        ${row('Meter no.','2201-7714-09')}
+        <hr>
+        ${row('Units consumed','320','units')}
+        ${row('Energy charge','2,213.90')}
+        ${row('Demand charge','84.00','demand')}
+        ${row('VAT 5%','114.90')}
+        ${row('Adjustment / other','450.00','misc')}
+        <hr>
+        ${row('TOTAL PAYABLE','2,862.80','total')}
+        <div class="stamp">DUE 15 OCT</div>
+      </div>
+    `;
+  }
+
+  return `
+    <div class="notebook">
+      <div class="nb-t">Lal Khata, 2026</div>
+      ${KH.map((e,i)=>`
+        <div class="kh ${e[4]==='p'?'pd':''}">
+          <span>${dfmtEN(e[0])}</span>
+          <span>${esc(PEOPLE[e[1]]?.en||e[1])}</span>
+          <b data-f="e${i}">${e[4]==='p'?'−':''}${e[2]}</b>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+const dfmtEN=iso=>{
+  const [y,m,d]=iso.split('-').map(Number);
+  return d+' '+MON_EN[m-1];
+};
+
+/* ---------- Views ---------- */
+
 function header(){
-  return`<header class="hdr"><div class="hdr-in">
-  <button class="brand" data-act="home" aria-label="Home"><svg width="34" height="34" viewBox="0 0 34 34"><path d="M6 3h16l6 6v22H6z" fill="#fffdf6" stroke="#14201b" stroke-width="2"/><path d="M22 3v6h6" fill="none" stroke="#14201b" stroke-width="2"/><path d="M11 20l4 4 8-9" fill="none" stroke="#d02a3b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>${L('Kagoj Bondhu','কাগজ বন্ধু')}</b><small>${L('Your paper friend','আপনার কাগজের বন্ধু')}</small></span></button>
-  <button class="sw ${state.low?'on':''}" data-act="low" aria-pressed="${state.low}"><span>${L('Low data mode','কম ডেটা মোড')}</span><i></i></button>
-  <div class="seg" role="group" aria-label="Language"><button data-act="lang" data-l="bn" class="${state.lang==='bn'?'on':''}">বাংলা</button><button data-act="lang" data-l="en" class="${state.lang==='en'?'on':''}">EN</button></div></div></header>`;
+  return `
+    <header class="hdr">
+      <div class="hdr-in">
+        <button class="brand" data-act="home" aria-label="Home">
+          <svg width="34" height="34" viewBox="0 0 34 34">
+            <path d="M6 3h16l6 6v22H6z" fill="#fffdf6" stroke="#14201b" stroke-width="2"/>
+            <path d="M22 3v6h6" fill="none" stroke="#14201b" stroke-width="2"/>
+            <path d="M11 20l4 4 8-9" fill="none" stroke="#d02a3b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>
+            <b>${L('Kagoj Bondhu','কাগজ বন্ধু')}</b>
+            <small>${L('Your paper friend','আপনার কাগজের বন্ধু')}</small>
+          </span>
+        </button>
+
+        <button class="sw ${state.low?'on':''}"
+          data-act="low"
+          aria-pressed="${state.low}">
+          <span>${L('Low data mode','কম ডেটা মোড')}</span>
+          <i></i>
+        </button>
+
+        <div class="seg" role="group" aria-label="Language">
+          <button data-act="lang" data-l="bn"
+            class="${state.lang==='bn'?'on':''}">বাংলা</button>
+          <button data-act="lang" data-l="en"
+            class="${state.lang==='en'?'on':''}">EN</button>
+        </div>
+      </div>
+    </header>
+  `;
 }
+
 function home(){
-  return`<main class="wrap">
-  <section class="hero"><div>
-    <h1>${L('Every paper that touches your money, checked by a friend.','যে কাগজে আপনার টাকা জড়িত, তা যাচাই করে দেবে এক বন্ধু।')}</h1>
-    <p class="lead">${L('Take a photo of a payslip, loan slip, ledger page or bill. Kagoj Bondhu reads it, checks the numbers against the rules, and tells you in simple Bangla, out loud.','পে-স্লিপ, ঋণের স্লিপ, খাতার পাতা বা বিলের ছবি তুলুন। কাগজ বন্ধু পড়ে, নিয়মের সঙ্গে হিসাব মিলিয়ে, সহজ বাংলায় আপনাকে মুখে বলে দেবে।')}</p>
-    <div class="cta"><button class="btn primary big" data-act="open" data-m="payslip">${L('Try the payslip demo','পে-স্লিপ ডেমো দেখুন')}</button><a class="btn ghost big" href="#how">${L('How it works','কীভাবে কাজ করে')}</a></div>
-    <p class="fine">${L('Synthetic documents only for this demo. Images are processed in memory. Live reading sends them to your configured AI provider.','এই ডেমোতে শুধু কৃত্রিম কাগজ দিন। ছবি মেমোরিতে প্রক্রিয়াকরণ হয়। সরাসরি পড়ার সময় নির্ধারিত এআই সেবায় ছবি যায়।')}</p></div>
-  <div class="hero-r"><div class="sheet">${row('Basic','8,000')}${row('House rent','4,000')}${row('OT hours','60')}<div class="pr"><span>OT amount</span><b class="flag" data-f="x" style="display:inline-block">3,000</b></div>${row('Advance','(500)')}${row('NET PAY','16,950')}<div class="margin-note">${L('should be ৳4,615!','হওয়া উচিত ৳৪,৬১৫!')}</div></div></div></section>
-  <h2 class="sec">${L('Pick a paper','একটি কাগজ বেছে নিন')}</h2>
-  <div class="desk">${Object.keys(MODS).map(k=>{const d=MODS[k];return`<button class="tile ${d.cls}" data-act="open" data-m="${k}">${k==='payslip'?`<span class="badge-hero">${L('start here','এখান থেকে শুরু')}</span>`:''}<div class="ico">${d.ico}</div><h3>${d.title()}</h3><p>${d.sub()}</p><span class="who">${d.who()}</span></button>`}).join('')}</div>
-  <div class="box" style="margin-top:28px"><h3>🔎 ${L('Verify for organizations','প্রতিষ্ঠানের জন্য Verify')}</h3><p>${L('The same engine, with evidence for a human reviewer.','একই ইঞ্জিন, মানুষের পর্যালোচনার জন্য প্রমাণসহ।')}</p><button class="btn ghost" data-act="verify">${L('Open Verify','Verify খুলুন')}</button></div>
-  <section class="how" id="how"><div><h2>${L('The AI reads. Plain code does the math.','এআই পড়ে। সাধারণ কোড হিসাব করে।')}</h2><p class="s">${L('A language model can misread a number, or get arithmetic wrong. So it only reads and explains. Every calculation runs as ordinary code against a written rule, and you confirm the numbers before anything is checked.','ভাষা-মডেল কখনো সংখ্যা ভুল পড়তে বা অঙ্কে ভুল করতে পারে। তাই সে শুধু পড়ে ও ব্যাখ্যা করে। প্রতিটি হিসাব চলে সাধারণ কোডে, লিখিত নিয়ম মেনে, আর যাচাইয়ের আগে সংখ্যাগুলো আপনি নিশ্চিত করেন।')}</p></div>
-  <ol class="seq"><li><div><b>${L('Capture','ছবি তুলুন')}</b><span>${L('Photo or upload, compressed on the phone','ছবি বা আপলোড, ফোনেই ছোট করা')}</span></div></li><li><div><b>${L('Read (AI)','পড়া (এআই)')}</b><span>${L('A vision model pulls out the numbers as data','ভিশন মডেল সংখ্যাগুলো ডেটা হিসেবে বের করে')}</span></div></li><li><div><b>${L('Confirm','নিশ্চিত করুন')}</b><span>${L('You fix anything it was unsure about','যেখানে সে নিশ্চিত ছিল না, আপনি ঠিক করেন')}</span></div></li><li class="code"><div><b>${L('Check (code)','যাচাই (কোড)')}</b><span>${L('Rules run as code, so the math is exact','নিয়ম চলে কোডে, তাই হিসাব নির্ভুল')}</span></div></li><li><div><b>${L('Listen','শুনুন')}</b><span>${L('Bangla voice, and a one-tap WhatsApp share','বাংলা ভয়েস, আর এক ট্যাপে হোয়াটসঅ্যাপে পাঠানো')}</span></div></li></ol></section>
-  <p class="foot">${L('Prototype. Rule packs contain demo values and simplified rules; verify them against official sources before real use. This tool gives possible findings, not legal or financial advice.','প্রোটোটাইপ। রুল-প্যাকে ডেমো মান ও সরলীকৃত নিয়ম আছে; বাস্তব ব্যবহারের আগে সরকারি উৎসে যাচাই করুন। এটি সম্ভাব্য পর্যবেক্ষণ দেয়, আইনি বা আর্থিক পরামর্শ নয়।')}</p></main>`;
+  return `
+    <main class="wrap">
+      <section class="hero">
+        <div>
+          <h1>${L(
+            'Every paper that touches your money, checked by a friend.',
+            'যে কাগজে আপনার টাকা জড়িত, তা যাচাই করে দেবে এক বন্ধু।'
+          )}</h1>
+
+          <p class="lead">${L(
+            'Take a photo of a payslip, loan slip, ledger page or bill. Kagoj Bondhu reads it, checks the numbers against the rules, and tells you in simple Bangla, out loud.',
+            'পে-স্লিপ, ঋণের স্লিপ, খাতার পাতা বা বিলের ছবি তুলুন। কাগজ বন্ধু পড়ে, নিয়মের সঙ্গে হিসাব মিলিয়ে, সহজ বাংলায় আপনাকে মুখে বলে দেবে।'
+          )}</p>
+
+          <div class="cta">
+            <button class="btn primary big" data-act="open" data-m="payslip">
+              ${L('Try the payslip demo','পে-স্লিপ ডেমো দেখুন')}
+            </button>
+            <a class="btn ghost big" href="#how">
+              ${L('How it works','কীভাবে কাজ করে')}
+            </a>
+          </div>
+
+          <p class="fine">${L(
+            'Synthetic documents only for this demo. Images are processed in memory. Live reading sends them to your configured AI provider.',
+            'এই ডেমোতে শুধু কৃত্রিম কাগজ দিন। ছবি মেমোরিতে প্রক্রিয়াকরণ হয়। সরাসরি পড়ার সময় নির্ধারিত এআই সেবায় ছবি যায়।'
+          )}</p>
+        </div>
+
+        <div class="hero-r">
+          <div class="sheet">
+            ${row('Basic','8,000')}
+            ${row('House rent','4,000')}
+            ${row('OT hours','60')}
+            <div class="pr">
+              <span>OT amount</span>
+              <b class="flag" data-f="x" style="display:inline-block">3,000</b>
+            </div>
+            ${row('Advance','(500)')}
+            ${row('NET PAY','16,950')}
+            <div class="margin-note">
+              ${L('should be ৳4,615!','হওয়া উচিত ৳৪,৬১৫!')}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <h2 class="sec">${L('Pick a paper','একটি কাগজ বেছে নিন')}</h2>
+
+      <div class="desk">
+        ${Object.keys(MODS).map(k=>{
+          const d=MODS[k];
+          return `
+            <button class="tile ${d.cls}" data-act="open" data-m="${k}">
+              ${k==='payslip'?`
+                <span class="badge-hero">${L('start here','এখান থেকে শুরু')}</span>
+              `:''}
+              <div class="ico">${d.ico}</div>
+              <h3>${d.title()}</h3>
+              <p>${d.sub()}</p>
+              <span class="who">${d.who()}</span>
+            </button>
+          `;
+        }).join('')}
+      </div>
+
+      <div class="box" style="margin-top:28px">
+        <h3>🔎 ${L('Verify for organizations','প্রতিষ্ঠানের জন্য Verify')}</h3>
+        <p>${L(
+          'The same engine, with evidence for a human reviewer.',
+          'একই ইঞ্জিন, মানুষের পর্যালোচনার জন্য প্রমাণসহ।'
+        )}</p>
+        <button class="btn ghost" data-act="verify">
+          ${L('Open Verify','Verify খুলুন')}
+        </button>
+      </div>
+
+      <section class="how" id="how">
+        <div>
+          <h2>${L(
+            'The AI reads. Plain code does the math.',
+            'এআই পড়ে। সাধারণ কোড হিসাব করে।'
+          )}</h2>
+          <p class="s">${L(
+            'A language model can misread a number, or get arithmetic wrong. So it only reads and explains. Every calculation runs as ordinary code against a written rule, and you confirm the numbers before anything is checked.',
+            'ভাষা-মডেল কখনো সংখ্যা ভুল পড়তে বা অঙ্কে ভুল করতে পারে। তাই সে শুধু পড়ে ও ব্যাখ্যা করে। প্রতিটি হিসাব চলে সাধারণ কোডে, লিখিত নিয়ম মেনে, আর যাচাইয়ের আগে সংখ্যাগুলো আপনি নিশ্চিত করেন।'
+          )}</p>
+        </div>
+
+        <ol class="seq">
+          <li><div>
+            <b>${L('Capture','ছবি তুলুন')}</b>
+            <span>${L(
+              'Photo or upload, compressed on the phone',
+              'ছবি বা আপলোড, ফোনেই ছোট করা'
+            )}</span>
+          </div></li>
+
+          <li><div>
+            <b>${L('Read (AI)','পড়া (এআই)')}</b>
+            <span>${L(
+              'A vision model pulls out the numbers as data',
+              'ভিশন মডেল সংখ্যাগুলো ডেটা হিসেবে বের করে'
+            )}</span>
+          </div></li>
+
+          <li><div>
+            <b>${L('Confirm','নিশ্চিত করুন')}</b>
+            <span>${L(
+              'You fix anything it was unsure about',
+              'যেখানে সে নিশ্চিত ছিল না, আপনি ঠিক করেন'
+            )}</span>
+          </div></li>
+
+          <li class="code"><div>
+            <b>${L('Check (code)','যাচাই (কোড)')}</b>
+            <span>${L(
+              'Rules run as code, so the math is exact',
+              'নিয়ম চলে কোডে, তাই হিসাব নির্ভুল'
+            )}</span>
+          </div></li>
+
+          <li><div>
+            <b>${L('Listen','শুনুন')}</b>
+            <span>${L(
+              'Bangla voice, and a one-tap WhatsApp share',
+              'বাংলা ভয়েস, আর এক ট্যাপে হোয়াটসঅ্যাপে পাঠানো'
+            )}</span>
+          </div></li>
+        </ol>
+      </section>
+
+      <p class="foot">${L(
+        'Prototype. Rule packs contain demo values and simplified rules; verify them against official sources before real use. This tool gives possible findings, not legal or financial advice.',
+        'প্রোটোটাইপ। রুল-প্যাকে ডেমো মান ও সরলীকৃত নিয়ম আছে; বাস্তব ব্যবহারের আগে সরকারি উৎসে যাচাই করুন। এটি সম্ভাব্য পর্যবেক্ষণ দেয়, আইনি বা আর্থিক পরামর্শ নয়।'
+      )}</p>
+    </main>
+  `;
 }
+
 function moduleView(){
-  const m=state.view,d=MODS[m],s=state.step;
-  const steps=[L('Capture','ছবি'),L('Read','পড়া'),L('Confirm','নিশ্চিত'),L('Check','যাচাই')];
-  return`<main class="wrap"><div class="mod-top"><button class="back" data-act="home">${L('Back','পেছনে')}</button><h2>${d.ico} ${d.title()}</h2><p>${d.sub()}</p></div>
-  <ol class="stepper">${steps.map((x,i)=>`<li class="${i+1<s?'done':i+1===s?'now':''}">${x}</li>`).join('')}</ol>
-  <div class="stage"><section class="pane-doc">${s===1?capture(m):docPane(m)}</section><section class="side">${s===1?captureSide(m):s===2?readSide(m):s===3?confirmSide(m):resultSide(m)}</section></div></main>`;
+  const m=state.view;
+  const d=MODS[m];
+  const s=state.step;
+
+  const steps=[
+    L('Capture','ছবি'),
+    L('Read','পড়া'),
+    L('Confirm','নিশ্চিত'),
+    L('Check','যাচাই')
+  ];
+
+  return `
+    <main class="wrap">
+      <div class="mod-top">
+        <button class="back" data-act="home">${L('Back','পেছনে')}</button>
+        <h2>${d.ico} ${d.title()}</h2>
+        <p>${d.sub()}</p>
+      </div>
+
+      <ol class="stepper">
+        ${steps.map((x,i)=>`
+          <li class="${i+1<s?'done':i+1===s?'now':''}">${x}</li>
+        `).join('')}
+      </ol>
+
+      <div class="stage">
+        <section class="pane-doc">
+          ${s===1?capture(m):docPane(m)}
+        </section>
+        <section class="side">
+          ${
+            s===1?captureSide(m):
+            s===2?readSide(m):
+            s===3?confirmSide(m):
+            resultSide(m)
+          }
+        </section>
+      </div>
+    </main>
+  `;
 }
-function capture(m){return`<label class="drop" id="drop"><input type="file" id="file" accept="image/*" capture="environment" hidden><div class="big-ico">📷</div><h3>${L('Take or upload a photo','ছবি তুলুন বা আপলোড করুন')}</h3><p>${L('Tap here, or drop a picture on this box','এখানে ট্যাপ করুন, বা ছবি এই বাক্সে ছেড়ে দিন')}</p></label>`}
-function captureSide(m){return`<h3>${L('No photo handy?','ছবি হাতে নেই?')}</h3><p class="sub">${L('Try the demo with a sample. It shows the whole flow.','নমুনা দিয়ে ডেমো দেখুন। পুরো প্রক্রিয়াটা বোঝা যাবে।')}</p>
-  <button class="sample-card" data-act="sample"><span style="font-size:32px">${MODS[m].ico}</span><span>${MODS[m].sample()}<small>${L('Ready in a few seconds','কয়েক সেকেন্ডেই তৈরি')}</small></span></button>
-  <div class="box" style="margin-top:16px"><b>${L('For a good photo','ভালো ছবির জন্য')}</b><ul class="tips"><li>${L('Lay the paper flat, in good light','কাগজ সমতলে রাখুন, ভালো আলোয়')}</li><li>${L('Keep all four corners in the picture','চারটি কোণ ছবিতে রাখুন')}</li><li>${L('Hold the phone steady','ফোন স্থির রাখুন')}</li></ul></div>`}
+
+function capture(m){
+  return `
+    <label class="drop" id="drop">
+      <input type="file" id="file" accept="image/*" capture="environment" hidden>
+      <div class="big-ico">📷</div>
+      <h3>${L('Take or upload a photo','ছবি তুলুন বা আপলোড করুন')}</h3>
+      <p>${L(
+        'Tap here, or drop a picture on this box',
+        'এখানে ট্যাপ করুন, বা ছবি এই বাক্সে ছেড়ে দিন'
+      )}</p>
+    </label>
+  `;
+}
+
+function captureSide(m){
+  return `
+    <h3>${L('No photo handy?','ছবি হাতে নেই?')}</h3>
+    <p class="sub">${L(
+      'Try the demo with a sample. It shows the whole flow.',
+      'নমুনা দিয়ে ডেমো দেখুন। পুরো প্রক্রিয়াটা বোঝা যাবে।'
+    )}</p>
+
+    <button class="sample-card" data-act="sample">
+      <span style="font-size:32px">${MODS[m].ico}</span>
+      <span>
+        ${MODS[m].sample()}
+        <small>${L('Ready in a few seconds','কয়েক সেকেন্ডেই তৈরি')}</small>
+      </span>
+    </button>
+
+    <div class="box" style="margin-top:16px">
+      <b>${L('For a good photo','ভালো ছবির জন্য')}</b>
+      <ul class="tips">
+        <li>${L('Lay the paper flat, in good light','কাগজ সমতলে রাখুন, ভালো আলোয়')}</li>
+        <li>${L('Keep all four corners in the picture','চারটি কোণ ছবিতে রাখুন')}</li>
+        <li>${L('Hold the phone steady','ফোন স্থির রাখুন')}</li>
+      </ul>
+    </div>
+  `;
+}
+
 function docPane(m){
-  const u=state.upload,s=state.step;
-  return`<div class="table"><div class="photo ${s===2&&!state.readDone?'scanning':''}" id="photo">${u?`<img src="${u.data}" alt="">`:paper(m)}<div class="scan"></div></div></div>
-  <p class="cap">${u?L(`Photo shrunk on your device: ${kb(u.before)} to ${kb(u.after)} (${N(Math.round((1-u.after/u.before)*100))}% smaller)`,`ছবি আপনার ডিভাইসেই ছোট করা হয়েছে: ${kb(u.before)} থেকে ${kb(u.after)} (${N(Math.round((1-u.after/u.before)*100))}% ছোট)`):s===4?L('The red pen marks what Kagoj Bondhu questioned.','লাল কলমের দাগ দিয়ে দেখানো হয়েছে কোথায় সন্দেহ।'):L('Sample document','নমুনা কাগজ')}</p>`;
+  const u=state.upload;
+  const s=state.step;
+
+  return `
+    <div class="table">
+      <div class="photo ${s===2&&!state.readDone?'scanning':''}" id="photo">
+        ${u?`<img src="${u.data}" alt="">`:paper(m)}
+        <div class="scan"></div>
+      </div>
+    </div>
+
+    <p class="cap">${
+      u
+        ?L(
+          `Photo shrunk on your device: ${kb(u.before)} to ${kb(u.after)} (${N(Math.round((1-u.after/u.before)*100))}% smaller)`,
+          `ছবি আপনার ডিভাইসেই ছোট করা হয়েছে: ${kb(u.before)} থেকে ${kb(u.after)} (${N(Math.round((1-u.after/u.before)*100))}% ছোট)`
+        )
+        :s===4
+          ?L(
+            'The red pen marks what Kagoj Bondhu questioned.',
+            'লাল কলমের দাগ দিয়ে দেখানো হয়েছে কোথায় সন্দেহ।'
+          )
+          :L('Sample document','নমুনা কাগজ')
+    }</p>
+  `;
 }
+
 function readSide(m){
   const fs=fieldsOf(m);
-  return`<h3>${L('Reading the paper','কাগজ পড়া হচ্ছে')}</h3><p class="sub"><span class="tag-ai">${L('AI vision model','এআই ভিশন মডেল')}</span> <span id="rstat">${L('pulls out each number','প্রতিটি সংখ্যা বের করছে')}</span></p>
-  <div class="box"><ul class="rl" id="rl">${fs.map(f=>`<li><span class="l">${f.label}</span><span class="v">${showVal(f,state.vals[f.k])}</span><div class="conf ${f.c<.9?'lo':''}"><i style="width:${f.c*100}%"></i></div></li>`).join('')}</ul></div>
-  <div class="json" id="json">{}</div>
-  ${state.readState==='mock'?`<div class="sim">${L('Demo mode: the server has no vision-model key, so these numbers are sample values, not read from your photo.','ডেমো মোড: সার্ভারে ভিশন মডেলের কী নেই, তাই এগুলো নমুনা সংখ্যা, আপনার ছবি থেকে পড়া নয়।')}</div>`:state.readState==='fallback'?`<div class="sim">${L('Reading failed. No numbers were guessed.','পড়া যায়নি। কোনো সংখ্যা অনুমান করা হয়নি।')}<p role="alert">${esc(state.readError||'Reading failed')}</p><button class="btn ghost" data-act="retryread">${L('Retry AI reading','আবার এআই দিয়ে পড়ুন')}</button></div>`:''}
-  <div class="actions"><button class="btn primary" id="cont2" data-act="to3" ${state.readDone&&state.readState!=='fallback'?'':'disabled'}>${L('Continue and confirm the numbers','এগিয়ে যান, সংখ্যা নিশ্চিত করুন')}</button></div>`;
-}
-function confirmSide(m){
-  const fs=fieldsOf(m),r=compute(m,state.vals);
-  return`<h3>${L('Are these numbers right?','সংখ্যাগুলো কি ঠিক?')}</h3><p class="sub">${L('Correct anything that looks wrong. The check uses exactly what you confirm here.','ভুল মনে হলে ঠিক করে দিন। যাচাই হবে আপনার নিশ্চিত করা সংখ্যা দিয়েই।')}</p>
-  <div class="box"><div class="${m==='khata'?'grid2':''}">${fs.map(f=>`<label class="fld ${f.c<.9?'low':''}"><span class="fl"><span>${f.label}</span>${f.c<.9?`<em>${L('Please check','দেখে নিন')} (${N(Math.round(f.c*100))}%)</em>`:''}</span><span class="inp"><i>${f.u==='%'?'%':f.u==='৳'?'৳':unitL(f.u)}</i><input type="number" inputmode="decimal" step="any" value="${state.vals[f.k]??''}" data-k="${f.k}"></span></label>`).join('')}</div></div>
-  ${m==='khata'?ledgerEditor():''}<p class="fine">${L('Reader confidence is uncalibrated. Check every field.','পড়ার আত্মবিশ্বাস পরীক্ষিত সম্ভাবনা নয়। প্রতিটি তথ্য মিলিয়ে নিন।')}</p><div class="live" id="live"><b>${r.bigNum!=null?r.fmt(r.bigNum):'✓'}</b> ${r.head}</div>
-  <div class="actions"><button class="btn primary big" data-act="to4">${L('Check this paper','কাগজটি যাচাই করুন')}</button><button class="btn ghost" data-act="to2">${L('Back','পেছনে')}</button></div>`;
-}
-const barsHTML=c=>`<div class="bars">${c.bars.map(b=>`<div class="bar-row"><div>${b.l}</div><div class="bar-track"><div class="bar-fill ${b.c}" style="--w:${Math.max(3,b.v/c.max*100)}%"></div>${c.marker?`<div class="marker" style="left:${c.marker.v/c.max*100}%"><em>${c.marker.l}</em></div>`:''}</div><div class="bar-t">${b.t}</div></div>`).join('')}</div>${c.marker?'<div style="height:14px"></div>':''}`;
-function resultSide(m){
-  const r=compute(m,state.vals);state.result=r;
-  const eye={bad:L('Kagoj Bondhu found a problem','কাগজ বন্ধু একটি সমস্যা পেয়েছে'),warn:L('Here is your summary','এই হলো আপনার সারসংক্ষেপ'),good:L('Checked within stated scope','উল্লিখিত সীমার মধ্যে যাচাই করা হয়েছে')}[r.tone];
-  return`<div class="verdict tone-${r.tone}"><div class="v-eye">${eye}</div><div class="v-big" id="big">${r.bigNum!=null?r.fmt(r.bigNum):'✓'}</div><div class="v-head">${r.head}</div><p class="fine">${r.aiMode==='ai'?L('AI explanation · numbers supplied by code','এআই ব্যাখ্যা · সংখ্যা দিয়েছে কোড'):L('Rule-based explanation · AI unavailable or disabled','নিয়মভিত্তিক ব্যাখ্যা · এআই অনুপলব্ধ বা বন্ধ')}</p><p class="v-ex">${r.explain}</p>
-  <div class="actions"><button class="btn primary listen" data-act="speak"><span class="ic">🔊</span><span class="wv"><i></i><i></i><i></i><i></i></span>${L('Listen','শুনুন')}</button><button class="btn ghost" data-act="share">${L('Share on WhatsApp','হোয়াটসঅ্যাপে পাঠান')}</button></div>
-  <div class="trust"><span>${state.readState==='live'?L('AI-read; user confirmed','এআই পড়েছে; ব্যবহারকারী নিশ্চিত করেছেন'):L('Sample values; user confirmed','নমুনা মান; ব্যবহারকারী নিশ্চিত করেছেন')}</span><span>${L('Code did the math','কোড হিসাব করেছে')}</span><span>${L('No server file storage','সার্ভারে ফাইল জমা নেই')}</span></div></div>
-  <div class="box"><h4>${L('How we got there','হিসাবটা যেভাবে হলো')}</h4><table class="calc">${r.lines.map(l=>`<tr><td>${l[0]}${l[2]?`<small>${l[2]}</small>`:''}</td><td>${l[1]}</td></tr>`).join('')}</table></div>
-  <div class="box">${barsHTML(r.chart)}</div>
-  ${m==='khata'?`<div class="box"><h4>${L('Ask your ledger','খাতাকে জিজ্ঞেস করুন')}</h4><div class="chips"><button class="chip" data-act="ask" data-q="top">${L('Who owes me the most?','সবচেয়ে বেশি বাকি কার?')}</button><button class="chip" data-act="ask" data-q="over">${L('Who is overdue?','কার বাকি পুরোনো?')}</button><button class="chip" data-act="ask" data-q="remind">${L('Write a reminder','অনুস্মারক লিখুন')}</button></div><div class="answer" id="answer">${L('Tap a question. The answer is also read aloud.','একটি প্রশ্ন ট্যাপ করুন। উত্তর মুখেও শোনানো হবে।')}</div></div>`:''}
-  ${r.next?`<div class="box next">${r.next}</div>`:''}
-  ${proofView(state.checked?.proof)}
-  <div class="box rule">${r.rule}</div>
-  <div class="actions"><button class="btn ghost" data-act="to3">${L('Edit the numbers','সংখ্যা বদলান')}</button><button class="btn ghost" data-act="home">${L('Check another paper','আরেকটি কাগজ যাচাই করুন')}</button></div>`;
+
+  return `
+    <h3>${L('Reading the paper','কাগজ পড়া হচ্ছে')}</h3>
+    <p class="sub">
+      <span class="tag-ai">${L('AI vision model','এআই ভিশন মডেল')}</span>
+      <span id="rstat">${L('pulls out each number','প্রতিটি সংখ্যা বের করছে')}</span>
+    </p>
+
+    <div class="box">
+      <ul class="rl" id="rl">
+        ${fs.map(f=>`
+          <li>
+            <span class="l">${f.label}</span>
+            <span class="v">${showVal(f,state.vals[f.k])}</span>
+            <div class="conf ${f.c<.9?'lo':''}">
+              <i style="width:${f.c*100}%"></i>
+            </div>
+          </li>
+        `).join('')}
+      </ul>
+    </div>
+
+    <div class="json" id="json">{}</div>
+
+    ${
+      state.readState==='mock'
+        ?`
+          <div class="sim">${L(
+            'Demo mode: the server has no vision-model key, so these numbers are sample values, not read from your photo.',
+            'ডেমো মোড: সার্ভারে ভিশন মডেলের কী নেই, তাই এগুলো নমুনা সংখ্যা, আপনার ছবি থেকে পড়া নয়।'
+          )}</div>
+        `
+        :state.readState==='fallback'
+          ?`
+            <div class="sim">
+              ${L(
+                'Reading failed. No numbers were guessed.',
+                'পড়া যায়নি। কোনো সংখ্যা অনুমান করা হয়নি।'
+              )}
+              <p role="alert">${esc(state.readError||'Reading failed')}</p>
+              <button class="btn ghost" data-act="retryread">
+                ${L('Retry AI reading','আবার এআই দিয়ে পড়ুন')}
+              </button>
+            </div>
+          `
+          :''
+    }
+
+    <div class="actions">
+      <button class="btn primary" id="cont2" data-act="to3"
+        ${state.readDone&&state.readState!=='fallback'?'':'disabled'}>
+        ${L(
+          'Continue and confirm the numbers',
+          'এগিয়ে যান, সংখ্যা নিশ্চিত করুন'
+        )}
+      </button>
+    </div>
+  `;
 }
 
-/* ---------- engine ---------- */
+function confirmSide(m){
+  const fs=fieldsOf(m);
+  const r=compute(m,state.vals);
+
+  return `
+    <h3>${L('Are these numbers right?','সংখ্যাগুলো কি ঠিক?')}</h3>
+    <p class="sub">${L(
+      'Correct anything that looks wrong. The check uses exactly what you confirm here.',
+      'ভুল মনে হলে ঠিক করে দিন। যাচাই হবে আপনার নিশ্চিত করা সংখ্যা দিয়েই।'
+    )}</p>
+
+    <div class="box">
+      <div class="${m==='khata'?'grid2':''}">
+        ${fs.map(f=>`
+          <label class="fld ${f.c<.9?'low':''}">
+            <span class="fl">
+              <span>${f.label}</span>
+              ${f.c<.9?`
+                <em>
+                  ${L('Please check','দেখে নিন')}
+                  (${N(Math.round(f.c*100))}%)
+                </em>
+              `:''}
+            </span>
+
+            <span class="inp">
+              <i>${f.u==='%'?'%':f.u==='৳'?'৳':unitL(f.u)}</i>
+              <input type="number"
+                inputmode="decimal"
+                step="any"
+                value="${state.vals[f.k]??''}"
+                data-k="${f.k}">
+            </span>
+          </label>
+        `).join('')}
+      </div>
+    </div>
+
+    ${m==='khata'?ledgerEditor():''}
+
+    <p class="fine">${L(
+      'Reader confidence is uncalibrated. Check every field.',
+      'পড়ার আত্মবিশ্বাস পরীক্ষিত সম্ভাবনা নয়। প্রতিটি তথ্য মিলিয়ে নিন।'
+    )}</p>
+
+    <div class="live" id="live">
+      <b>${r.bigNum!=null?r.fmt(r.bigNum):'✓'}</b>
+      ${r.head}
+    </div>
+
+    <div class="actions">
+      <button class="btn primary big" data-act="to4">
+        ${L('Check this paper','কাগজটি যাচাই করুন')}
+      </button>
+      <button class="btn ghost" data-act="to2">
+        ${L('Back','পেছনে')}
+      </button>
+    </div>
+  `;
+}
+
+const barsHTML=c=>`
+  <div class="bars">
+    ${c.bars.map(b=>`
+      <div class="bar-row">
+        <div>${b.l}</div>
+        <div class="bar-track">
+          <div class="bar-fill ${b.c}"
+            style="--w:${Math.max(3,b.v/c.max*100)}%"></div>
+
+          ${c.marker?`
+            <div class="marker" style="left:${c.marker.v/c.max*100}%">
+              <em>${c.marker.l}</em>
+            </div>
+          `:''}
+        </div>
+        <div class="bar-t">${b.t}</div>
+      </div>
+    `).join('')}
+  </div>
+  ${c.marker?'<div style="height:14px"></div>':''}
+`;
+
+function resultSide(m){
+  const r=compute(m,state.vals);
+  state.result=r;
+
+  const eye={
+    bad:L('Kagoj Bondhu found a problem','কাগজ বন্ধু একটি সমস্যা পেয়েছে'),
+    warn:L('Here is your summary','এই হলো আপনার সারসংক্ষেপ'),
+    good:L('Checked within stated scope','উল্লিখিত সীমার মধ্যে যাচাই করা হয়েছে')
+  }[r.tone];
+
+  return `
+    <div class="verdict tone-${r.tone}">
+      <div class="v-eye">${eye}</div>
+      <div class="v-big" id="big">${r.bigNum!=null?r.fmt(r.bigNum):'✓'}</div>
+      <div class="v-head">${r.head}</div>
+
+      <p class="fine">${
+        r.aiMode==='ai'
+          ?L(
+            'AI explanation · numbers supplied by code',
+            'এআই ব্যাখ্যা · সংখ্যা দিয়েছে কোড'
+          )
+          :L(
+            'Rule-based explanation · AI unavailable or disabled',
+            'নিয়মভিত্তিক ব্যাখ্যা · এআই অনুপলব্ধ বা বন্ধ'
+          )
+      }</p>
+
+      <p class="v-ex">${r.explain}</p>
+
+      <div class="actions">
+        <button class="btn primary listen" data-act="speak">
+          <span class="ic">🔊</span>
+          <span class="wv"><i></i><i></i><i></i><i></i></span>
+          ${L('Listen','শুনুন')}
+        </button>
+        <button class="btn ghost" data-act="share">
+          ${L('Share on WhatsApp','হোয়াটসঅ্যাপে পাঠান')}
+        </button>
+      </div>
+
+      <div class="trust">
+        <span>${
+          state.readState==='live'
+            ?L('AI-read; user confirmed','এআই পড়েছে; ব্যবহারকারী নিশ্চিত করেছেন')
+            :L('Sample values; user confirmed','নমুনা মান; ব্যবহারকারী নিশ্চিত করেছেন')
+        }</span>
+        <span>${L('Code did the math','কোড হিসাব করেছে')}</span>
+        <span>${L('No server file storage','সার্ভারে ফাইল জমা নেই')}</span>
+      </div>
+    </div>
+
+    <div class="box">
+      <h4>${L('How we got there','হিসাবটা যেভাবে হলো')}</h4>
+      <table class="calc">
+        ${r.lines.map(l=>`
+          <tr>
+            <td>${l[0]}${l[2]?`<small>${l[2]}</small>`:''}</td>
+            <td>${l[1]}</td>
+          </tr>
+        `).join('')}
+      </table>
+    </div>
+
+    <div class="box">${barsHTML(r.chart)}</div>
+
+    ${m==='khata'?`
+      <div class="box">
+        <h4>${L('Ask your ledger','খাতাকে জিজ্ঞেস করুন')}</h4>
+        <div class="chips">
+          <button class="chip" data-act="ask" data-q="top">
+            ${L('Who owes me the most?','সবচেয়ে বেশি বাকি কার?')}
+          </button>
+          <button class="chip" data-act="ask" data-q="over">
+            ${L('Who is overdue?','কার বাকি পুরোনো?')}
+          </button>
+          <button class="chip" data-act="ask" data-q="remind">
+            ${L('Write a reminder','অনুস্মারক লিখুন')}
+          </button>
+        </div>
+        <div class="answer" id="answer">
+          ${L(
+            'Tap a question. The answer is also read aloud.',
+            'একটি প্রশ্ন ট্যাপ করুন। উত্তর মুখেও শোনানো হবে।'
+          )}
+        </div>
+      </div>
+    `:''}
+
+    ${r.next?`<div class="box next">${r.next}</div>`:''}
+
+    ${proofView(state.checked?.proof)}
+
+    <div class="box rule">${r.rule}</div>
+
+    <div class="actions">
+      <button class="btn ghost" data-act="to3">
+        ${L('Edit the numbers','সংখ্যা বদলান')}
+      </button>
+      <button class="btn ghost" data-act="home">
+        ${L('Check another paper','আরেকটি কাগজ যাচাই করুন')}
+      </button>
+    </div>
+  `;
+}
+
+/* ---------- Rendering ---------- */
+
 function render(){
-  timers.forEach(clearTimeout);timers=[];
+  timers.forEach(clearTimeout);
+  timers=[];
+
   document.documentElement.lang=state.lang==='bn'?'bn':'en';
   document.body.classList.toggle('low',state.low);
-  $('#app').innerHTML=header()+(state.view==='home'?home():state.view==='verify'?verifyView():state.view==='compare'?compareView():moduleView());
-  if(state.view==='home'||state.view==='verify'||state.view==='compare')return;
-  const m=state.view,s=state.step;
+
+  $('#app').innerHTML=header()+(
+    state.view==='home'
+      ?home()
+      :state.view==='verify'
+        ?verifyView()
+        :state.view==='compare'
+          ?compareView()
+          :moduleView()
+  );
+
+  if(
+    state.view==='home'||
+    state.view==='verify'||
+    state.view==='compare'
+  )return;
+
+  const m=state.view;
+  const s=state.step;
+
   if(s===2)runRead(m);
   if(s===3)markPaper(m,false);
-  if(s===4){markPaper(m,true);const r=state.result;if(r.bigNum!=null)countUp($('#big'),r.bigNum,r.fmt)}
+
+  if(s===4){
+    markPaper(m,true);
+    const r=state.result;
+    if(r.bigNum!=null)countUp($('#big'),r.bigNum,r.fmt);
+  }
 }
+
 function markPaper(m,flag){
   const fs=fieldsOf(m);
   if(state.upload)return;
-  if(!flag)fs.forEach(f=>{const e=$(`.photo [data-f="${f.k}"]`);if(e)e.classList.add(f.c<.9?'low':'hl')});
-  else{const r=state.result;r.flagKeys.forEach(k=>{const e=$(`.photo [data-f="${k}"]`);if(e)e.classList.add('flag')})}
-  if(flag&&state.result.note){const p=$('#photo');const n=document.createElement('div');n.className='margin-note';n.textContent=state.result.note;p.appendChild(n)}
-}
-function runRead(m){
-  const fs=fieldsOf(m),lis=[...document.querySelectorAll('#rl li')],photo=$('#photo');
-  const jsonAt=n=>'{\n'+fs.slice(0,n).map(f=>`  "${f.k}": ${state.vals[f.k]}`).join(',\n')+(n?'\n':'')+'}';
-  const done=()=>{state.readDone=true;photo.classList.remove('scanning');$('#rstat').textContent=state.readState==='fallback'?L('Reading failed','পড়া যায়নি'):L(`read ${N(fs.filter(f=>state.vals[f.k]!=null).length)} numbers`,`${N(fs.filter(f=>state.vals[f.k]!=null).length)}টি সংখ্যা পড়া হয়েছে`);$('#cont2').disabled=state.readState==='fallback';$('#json').textContent=jsonAt(fs.length)};
-  const show=i=>{lis[i].classList.add('in');const e=$(`.photo [data-f="${fs[i].k}"]`);if(e&&!state.upload)e.classList.add(fs[i].c<.9?'low':'hl');$('#json').textContent=jsonAt(i+1)};
-  if(state.readState==='loading'){$('#rstat').textContent=L('sending your photo to the vision model…','ছবি ভিশন মডেলে পাঠানো হচ্ছে…');return}
-  if(state.readDone||state.low){lis.forEach((_,i)=>show(i));done();return}
-  const gap=Math.min(420,2600/fs.length);
-  fs.forEach((_,i)=>timers.push(setTimeout(()=>show(i),800+i*gap)));
-  timers.push(setTimeout(done,800+fs.length*gap+250));
-}
-function countUp(el,to,fmt){
-  if(!el)return;if(state.low){el.textContent=fmt(to);return}
-  const t0=performance.now(),D=900;const f=t=>{const p=Math.min(1,(t-t0)/D),e=1-Math.pow(1-p,3);el.textContent=fmt(to*e);if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f);
-}
-function go(step){if(step===3)state.checked=null;state.step=step;render();window.scrollTo({top:0,behavior:state.low?'auto':'smooth'})}
-function toast(t){const e=document.createElement('div');e.className='toast';e.textContent=t;document.body.appendChild(e);setTimeout(()=>e.remove(),3600)}
-function setSpeaking(b){state.speaking=b;document.querySelectorAll('.listen').forEach(e=>e.classList.toggle('on',b))}
-let activeAudio=null, audioUrl=null, speechSequence=0;
-function stopSpeech(){
-  speechSequence++;window.speechSynthesis?.cancel();
-  if(activeAudio){activeAudio.pause();activeAudio=null}
-  if(audioUrl){URL.revokeObjectURL(audioUrl);audioUrl=null}setSpeaking(false);
-}
-async function speak(text){
-  if(state.speaking){stopSpeech();return}
-  stopSpeech();const sequence=speechSequence;const language=state.lang;setSpeaking(true);
-  try{
-    const res=await fetch('/api/speak',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text,language})});
-    if(!res.ok)throw new Error('Cloud voice unavailable');
-    const blob=await res.blob();if(sequence!==speechSequence)return;
-    audioUrl=URL.createObjectURL(blob);activeAudio=new Audio(audioUrl);
-    activeAudio.onended=()=>{if(sequence===speechSequence)stopSpeech()};
-    await activeAudio.play();return;
-  }catch(e){
-    if(sequence!==speechSequence)return;
-    if(audioUrl){URL.revokeObjectURL(audioUrl);audioUrl=null}activeAudio=null;
-    if(!('speechSynthesis' in window)){setSpeaking(false);toast(L('Cloud speech unavailable. Read the displayed text.','ক্লাউড কণ্ঠ পাওয়া যায়নি। দেখানো লেখা পড়ুন।'));return}
-    const voice=speechSynthesis.getVoices().find(v=>v.lang.toLowerCase().startsWith(language));
-    if(!voice){setSpeaking(false);toast(L('Cloud speech unavailable and no matching device voice is installed.','ক্লাউড কণ্ঠ অনুপলব্ধ এবং এই ডিভাইসে প্রযোজ্য কণ্ঠ নেই।'));return}
-    toast(L('Cloud speech unavailable; using device voice.','ক্লাউড কণ্ঠ অনুপলব্ধ; ডিভাইসের কণ্ঠ ব্যবহার হচ্ছে।'));
-    const u=new SpeechSynthesisUtterance(text);u.voice=voice;u.lang=voice.lang;
-    u.onend=u.onerror=()=>{if(sequence===speechSequence)setSpeaking(false)};speechSynthesis.speak(u);
+
+  if(!flag){
+    fs.forEach(f=>{
+      const e=$(`.photo [data-f="${f.k}"]`);
+      if(e)e.classList.add(f.c<.9?'low':'hl');
+    });
+  }else{
+    const r=state.result;
+    r.flagKeys.forEach(k=>{
+      const e=$(`.photo [data-f="${k}"]`);
+      if(e)e.classList.add('flag');
+    });
+  }
+
+  if(flag&&state.result.note){
+    const p=$('#photo');
+    const n=document.createElement('div');
+    n.className='margin-note';
+    n.textContent=state.result.note;
+    p.appendChild(n);
   }
 }
 
+function runRead(m){
+  const fs=fieldsOf(m);
+  const lis=[...document.querySelectorAll('#rl li')];
+  const photo=$('#photo');
+
+  const jsonAt=n=>'{\n'+fs.slice(0,n)
+    .map(f=>`  "${f.k}": ${state.vals[f.k]}`)
+    .join(',\n')+(n?'\n':'')+'}';
+
+  const done=()=>{
+    state.readDone=true;
+    photo.classList.remove('scanning');
+
+    $('#rstat').textContent=state.readState==='fallback'
+      ?L('Reading failed','পড়া যায়নি')
+      :L(
+        `read ${N(fs.filter(f=>state.vals[f.k]!=null).length)} numbers`,
+        `${N(fs.filter(f=>state.vals[f.k]!=null).length)}টি সংখ্যা পড়া হয়েছে`
+      );
+
+    $('#cont2').disabled=state.readState==='fallback';
+    $('#json').textContent=jsonAt(fs.length);
+  };
+
+  const show=i=>{
+    lis[i].classList.add('in');
+
+    const e=$(`.photo [data-f="${fs[i].k}"]`);
+    if(e&&!state.upload){
+      e.classList.add(fs[i].c<.9?'low':'hl');
+    }
+
+    $('#json').textContent=jsonAt(i+1);
+  };
+
+  if(state.readState==='loading'){
+    $('#rstat').textContent=L(
+      'sending your photo to the vision model…',
+      'ছবি ভিশন মডেলে পাঠানো হচ্ছে…'
+    );
+    return;
+  }
+
+  if(state.readDone||state.low){
+    lis.forEach((_,i)=>show(i));
+    done();
+    return;
+  }
+
+  const gap=Math.min(420,2600/fs.length);
+
+  fs.forEach((_,i)=>{
+    timers.push(setTimeout(()=>show(i),800+i*gap));
+  });
+
+  timers.push(setTimeout(done,800+fs.length*gap+250));
+}
+
+function countUp(el,to,fmt){
+  if(!el)return;
+
+  if(state.low){
+    el.textContent=fmt(to);
+    return;
+  }
+
+  const t0=performance.now();
+  const D=900;
+
+  const f=t=>{
+    const p=Math.min(1,(t-t0)/D);
+    const e=1-Math.pow(1-p,3);
+    el.textContent=fmt(to*e);
+    if(p<1)requestAnimationFrame(f);
+  };
+
+  requestAnimationFrame(f);
+}
+
+function go(step){
+  if(step===3)state.checked=null;
+  state.step=step;
+  render();
+
+  window.scrollTo({
+    top:0,
+    behavior:state.low?'auto':'smooth'
+  });
+}
+
+function toast(t){
+  const e=document.createElement('div');
+  e.className='toast';
+  e.textContent=t;
+  document.body.appendChild(e);
+  setTimeout(()=>e.remove(),3600);
+}
+
+/* ---------- Speech ---------- */
+
+function setSpeaking(b){
+  state.speaking=b;
+  document.querySelectorAll('.listen').forEach(e=>{
+    e.classList.toggle('on',b);
+  });
+}
+
+let activeAudio=null;
+let audioUrl=null;
+let speechSequence=0;
+
+function stopSpeech(){
+  speechSequence++;
+  window.speechSynthesis?.cancel();
+
+  if(activeAudio){
+    activeAudio.pause();
+    activeAudio=null;
+  }
+
+  if(audioUrl){
+    URL.revokeObjectURL(audioUrl);
+    audioUrl=null;
+  }
+
+  setSpeaking(false);
+}
+
+async function speak(text){
+  if(state.speaking){
+    stopSpeech();
+    return;
+  }
+
+  stopSpeech();
+
+  const sequence=speechSequence;
+  const language=state.lang;
+
+  setSpeaking(true);
+
+  try{
+    const res=await fetch('/api/speak',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({text,language})
+    });
+
+    if(!res.ok)throw new Error('Cloud voice unavailable');
+
+    const blob=await res.blob();
+    if(sequence!==speechSequence)return;
+
+    audioUrl=URL.createObjectURL(blob);
+    activeAudio=new Audio(audioUrl);
+
+    activeAudio.onended=()=>{
+      if(sequence===speechSequence)stopSpeech();
+    };
+
+    await activeAudio.play();
+    return;
+  }catch(e){
+    if(sequence!==speechSequence)return;
+
+    if(audioUrl){
+      URL.revokeObjectURL(audioUrl);
+      audioUrl=null;
+    }
+
+    activeAudio=null;
+
+    if(!('speechSynthesis' in window)){
+      setSpeaking(false);
+      toast(L(
+        'Cloud speech unavailable. Read the displayed text.',
+        'ক্লাউড কণ্ঠ পাওয়া যায়নি। দেখানো লেখা পড়ুন।'
+      ));
+      return;
+    }
+
+    const voice=speechSynthesis.getVoices().find(v=>
+      v.lang.toLowerCase().startsWith(language)
+    );
+
+    if(!voice){
+      setSpeaking(false);
+      toast(L(
+        'Cloud speech unavailable and no matching device voice is installed.',
+        'ক্লাউড কণ্ঠ অনুপলব্ধ এবং এই ডিভাইসে প্রযোজ্য কণ্ঠ নেই।'
+      ));
+      return;
+    }
+
+    toast(L(
+      'Cloud speech unavailable; using device voice.',
+      'ক্লাউড কণ্ঠ অনুপলব্ধ; ডিভাইসের কণ্ঠ ব্যবহার হচ্ছে।'
+    ));
+
+    const u=new SpeechSynthesisUtterance(text);
+    u.voice=voice;
+    u.lang=voice.lang;
+
+    u.onend=u.onerror=()=>{
+      if(sequence===speechSequence)setSpeaking(false);
+    };
+
+    speechSynthesis.speak(u);
+  }
+}
+
+/* ---------- Image handling ---------- */
+
 function handleFile(f){
-  if(!f)return;if(f.size>12*1024*1024){toast('Maximum file size is 12 MB');return}const rd=new FileReader();
-  rd.onload=()=>{const img=new Image();img.onload=()=>{
-    const max=state.low?720:1100,s=Math.min(1,max/Math.max(img.width,img.height)),c=document.createElement('canvas');
-    c.width=Math.round(img.width*s);c.height=Math.round(img.height*s);c.getContext('2d').drawImage(img,0,0,c.width,c.height);
-    const data=c.toDataURL('image/jpeg',state.low?.45:.65);
-    state.upload={data,before:f.size,after:Math.round(data.length*.75)};readWithAPI(data)};
-    img.onerror=()=>toast(L('Could not open this image. Try a JPG or PNG.','ছবিটি খোলা যায়নি। JPG বা PNG চেষ্টা করুন।'));img.src=rd.result};
+  if(!f)return;
+
+  if(f.size>12*1024*1024){
+    toast('Maximum file size is 12 MB');
+    return;
+  }
+
+  const rd=new FileReader();
+
+  rd.onload=()=>{
+    const img=new Image();
+
+    img.onload=()=>{
+      const max=state.low?720:1100;
+      const s=Math.min(1,max/Math.max(img.width,img.height));
+      const c=document.createElement('canvas');
+
+      c.width=Math.round(img.width*s);
+      c.height=Math.round(img.height*s);
+
+      c.getContext('2d').drawImage(img,0,0,c.width,c.height);
+
+      const data=c.toDataURL('image/jpeg',state.low ? .45 : .65);
+
+      state.upload={
+        data,
+        before:f.size,
+        after:Math.round(data.length*.75)
+      };
+
+      readWithAPI(data);
+    };
+
+    img.onerror=()=>toast(L(
+      'Could not open this image. Try a JPG or PNG.',
+      'ছবিটি খোলা যায়নি। JPG বা PNG চেষ্টা করুন।'
+    ));
+
+    img.src=rd.result;
+  };
+
   rd.readAsDataURL(f);
 }
 
 async function readWithAPI(dataUrl){
-  const m=state.view;state.readDone=false;state.readError='';state.readState='loading';state.conf={};state.vals=initVals(m);go(2);
+  const m=state.view;
+
+  state.readDone=false;
+  state.readError='';
+  state.readState='loading';
+  state.conf={};
+  state.vals=initVals(m);
+
+  go(2);
+
   try{
-    const r=await fetch('/api/read',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({module:m,image:dataUrl})});
-    if(!r.ok){const e=await r.json().catch(()=>({}));throw new Error(e.detail||('HTTP '+r.status))}
+    const r=await fetch('/api/read',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        module:m,
+        image:dataUrl
+      })
+    });
+
+    if(!r.ok){
+      const e=await r.json().catch(()=>({}));
+      throw new Error(e.detail||('HTTP '+r.status));
+    }
+
     const j=await r.json();
+
     if(state.view!==m||state.step!==2)return;
+
     if(m==='khata'){
-      if(!j.entries||!j.entries.length)throw new Error(L('No ledger rows found','খাতায় কোনো সারি পাওয়া যায়নি'));
-      KH=j.entries.map(e=>[e.date,e.name,e.amount,e.confidence,e.kind==='payment'?'p':'b']);
+      if(!j.entries||!j.entries.length){
+        throw new Error(L(
+          'No ledger rows found',
+          'খাতায় কোনো সারি পাওয়া যায়নি'
+        ));
+      }
+
+      KH=j.entries.map(e=>[
+        e.date,
+        e.name,
+        e.amount,
+        e.confidence,
+        e.kind==='payment'?'p':'b'
+      ]);
+
       state.vals=initVals('khata');
     }else{
       state.vals=initVals(m);
-      for(const [k,f] of Object.entries(j.fields)){state.vals[k]=f.value==null?null:f.value;state.conf[k]=f.value==null?0:f.confidence}
+
+      for(const [k,f] of Object.entries(j.fields)){
+        state.vals[k]=f.value==null?null:f.value;
+        state.conf[k]=f.value==null?0:f.confidence;
+      }
     }
+
     state.readState=j.mode==='mock'?'mock':'live';
-    if(state.readState==='live')state.asOf=new Date(Date.now()+6*3600*1000).toISOString().slice(0,10);
+
+    if(state.readState==='live'){
+      state.asOf=new Date(Date.now()+6*3600*1000)
+        .toISOString()
+        .slice(0,10);
+    }
   }catch(err){
     if(state.view!==m||state.step!==2)return;
-    state.readError=err.message||'Reading request failed';KH=[];state.vals=Object.fromEntries(Object.keys(initVals(m)).map(k=>[k,null]));state.conf={};state.readState='fallback';
-    if(err&&err.message&&!/HTTP|Failed to fetch|NetworkError|Load failed/i.test(err.message))toast(err.message);
+
+    state.readError=err.message||'Reading request failed';
+    KH=[];
+
+    state.vals=Object.fromEntries(
+      Object.keys(initVals(m)).map(k=>[k,null])
+    );
+
+    state.conf={};
+    state.readState='fallback';
+
+    if(
+      err&&
+      err.message&&
+      !/HTTP|Failed to fetch|NetworkError|Load failed/i.test(err.message)
+    ){
+      toast(err.message);
+    }
   }
-  state.readDone=false;render();
+
+  state.readDone=false;
+  render();
 }
-/* ---------- events ---------- */
+
+/* ---------- Events ---------- */
+
 document.addEventListener('click',e=>{
-  const a=e.target.closest('[data-act]');if(!a)return;const act=a.dataset.act;
-  if(act==='retryread'&&state.upload){readWithAPI(state.upload.data);return}
-  if(act==='verify'){stopSpeech();state.view='verify';render();return}
-  if(act==='home'){stopSpeech();state.view='home';state.upload=null;render();window.scrollTo(0,0)}
-  else if(act==='open'){KH=KH_SAMPLE.map(e=>e.slice());state.checked=null;state.asOf=TODAY;state.view=a.dataset.m;state.step=1;state.vals=initVals(a.dataset.m);state.conf={};state.readState='sample';state.upload=null;state.readDone=false;render();window.scrollTo(0,0)}
-  else if(act==='sample'){KH=KH_SAMPLE.map(e=>e.slice());state.vals=initVals(state.view);state.conf={};state.upload=null;state.readState='sample';state.readDone=false;go(2)}
-  else if(act==='to2')go(2);else if(act==='to3')go(3);else if(act==='to4')checkConfirmed();
-  else if(act==='lang'){stopSpeech();state.lang=a.dataset.l;render()}
-  else if(act==='low'){state.low=!state.low;render()}
-  else if(act==='speak')speak(state.result.speech);
-  else if(act==='share'){window.open('https://wa.me/?text='+encodeURIComponent(state.result.speech+'\n\n'+L('Checked with Kagoj Bondhu','কাগজ বন্ধু দিয়ে যাচাই করা')),'_blank','noopener')}
-  else if(act==='ask'){const r=khataAsk(a.dataset.q);$('#answer').innerHTML=r.t+(r.send?`<div class="actions"><button class="btn primary" data-act="sendrem">${L('Send on WhatsApp','হোয়াটসঅ্যাপে পাঠান')}</button></div>`:'');state.lastRem=r.t;if(speechSynthesis.speaking)speechSynthesis.cancel();speak(r.t)}
-  else if(act==='sendrem')window.open('https://wa.me/?text='+encodeURIComponent(state.lastRem),'_blank','noopener');
+  const a=e.target.closest('[data-act]');
+  if(!a)return;
+
+  const act=a.dataset.act;
+
+  if(act==='retryread'&&state.upload){
+    readWithAPI(state.upload.data);
+    return;
+  }
+
+  if(act==='verify'){
+    stopSpeech();
+    state.view='verify';
+    render();
+    return;
+  }
+
+  if(act==='home'){
+    stopSpeech();
+    state.view='home';
+    state.upload=null;
+    render();
+    window.scrollTo(0,0);
+  }else if(act==='open'){
+    KH=KH_SAMPLE.map(e=>e.slice());
+    state.checked=null;
+    state.asOf=TODAY;
+    state.view=a.dataset.m;
+    state.step=1;
+    state.vals=initVals(a.dataset.m);
+    state.conf={};
+    state.readState='sample';
+    state.upload=null;
+    state.readDone=false;
+    render();
+    window.scrollTo(0,0);
+  }else if(act==='sample'){
+    KH=KH_SAMPLE.map(e=>e.slice());
+    state.vals=initVals(state.view);
+    state.conf={};
+    state.upload=null;
+    state.readState='sample';
+    state.readDone=false;
+    go(2);
+  }else if(act==='to2'){
+    go(2);
+  }else if(act==='to3'){
+    go(3);
+  }else if(act==='to4'){
+    checkConfirmed();
+  }else if(act==='lang'){
+    stopSpeech();
+    state.lang=a.dataset.l;
+    render();
+  }else if(act==='low'){
+    state.low=!state.low;
+    render();
+  }else if(act==='speak'){
+    speak(state.result.speech);
+  }else if(act==='share'){
+    window.open(
+      'https://wa.me/?text='+encodeURIComponent(
+        state.result.speech+'\n\n'+L(
+          'Checked with Kagoj Bondhu',
+          'কাগজ বন্ধু দিয়ে যাচাই করা'
+        )
+      ),
+      '_blank',
+      'noopener'
+    );
+  }else if(act==='ask'){
+    const r=khataAsk(a.dataset.q);
+
+    $('#answer').innerHTML=r.t+(
+      r.send
+        ?`
+          <div class="actions">
+            <button class="btn primary" data-act="sendrem">
+              ${L('Send on WhatsApp','হোয়াটসঅ্যাপে পাঠান')}
+            </button>
+          </div>
+        `
+        :''
+    );
+
+    state.lastRem=r.t;
+
+    if(window.speechSynthesis?.speaking){
+      window.speechSynthesis.cancel();
+    }
+
+    speak(r.t);
+  }else if(act==='sendrem'){
+    window.open(
+      'https://wa.me/?text='+encodeURIComponent(state.lastRem),
+      '_blank',
+      'noopener'
+    );
+  }
 });
-document.addEventListener('change',e=>{if(e.target.id==='file')handleFile(e.target.files[0])});
-document.addEventListener('dragover',e=>{const d=e.target.closest('#drop');if(d){e.preventDefault();d.classList.add('over')}});
-document.addEventListener('dragleave',e=>{const d=e.target.closest('#drop');if(d)d.classList.remove('over')});
-document.addEventListener('drop',e=>{const d=e.target.closest('#drop');if(d){e.preventDefault();d.classList.remove('over');handleFile(e.dataTransfer.files[0])}});
+
+document.addEventListener('change',e=>{
+  if(e.target.id==='file'){
+    handleFile(e.target.files[0]);
+  }
+});
+
+document.addEventListener('dragover',e=>{
+  const d=e.target.closest('#drop');
+  if(d){
+    e.preventDefault();
+    d.classList.add('over');
+  }
+});
+
+document.addEventListener('dragleave',e=>{
+  const d=e.target.closest('#drop');
+  if(d)d.classList.remove('over');
+});
+
+document.addEventListener('drop',e=>{
+  const d=e.target.closest('#drop');
+  if(d){
+    e.preventDefault();
+    d.classList.remove('over');
+    handleFile(e.dataTransfer.files[0]);
+  }
+});
+
 document.addEventListener('input',e=>{
-  const k=e.target.dataset&&e.target.dataset.k;if(!k||e.target.tagName!=='INPUT')return;
-  state.checked=null;state.vals[k]=e.target.value===''?null:parseFloat(e.target.value);
-  const r=compute(state.view,state.vals);if($('#live'))$('#live').innerHTML=`<b>${r.bigNum!=null?r.fmt(r.bigNum):'✓'}</b> ${r.head}`;
+  const k=e.target.dataset&&e.target.dataset.k;
+
+  if(!k||e.target.tagName!=='INPUT')return;
+
+  state.checked=null;
+  state.vals[k]=e.target.value===''?null:parseFloat(e.target.value);
+
+  const r=compute(state.view,state.vals);
+
+  if($('#live')){
+    $('#live').innerHTML=`
+      <b>${r.bigNum!=null?r.fmt(r.bigNum):'✓'}</b>
+      ${r.head}
+    `;
+  }
 });
+
 document.addEventListener('focusin',e=>{
-  const k=e.target.dataset&&e.target.dataset.k;if(!k||e.target.tagName!=='INPUT')return;
-  document.querySelectorAll('.flash').forEach(x=>x.classList.remove('flash'));
-  const p=$(`.photo [data-f="${k}"]`);if(p)p.classList.add('flash');
+  const k=e.target.dataset&&e.target.dataset.k;
+
+  if(!k||e.target.tagName!=='INPUT')return;
+
+  document.querySelectorAll('.flash').forEach(x=>{
+    x.classList.remove('flash');
+  });
+
+  const p=$(`.photo [data-f="${k}"]`);
+  if(p)p.classList.add('flash');
 });
 </script>
+
 <script src="/features.js"></script>
 <script src="/verify.js"></script>
-<script>render();</script>
+<script src="/wallet.js"></script>
+<script src="/privacy.js"></script>
+<script>
+render();
+</script>
 </body>
 </html>

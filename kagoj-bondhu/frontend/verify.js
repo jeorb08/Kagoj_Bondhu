@@ -24,7 +24,7 @@ function verifyView(){
  <div class="box">${r.findings.map(f=>`<p><b>${esc(f.code)}</b><br>${esc(f[state.lang])}</p>`).join('')||L('No finding in the completed checks.','সম্পন্ন পরীক্ষায় কোনো অমিল পাওয়া যায়নি।')}</div>
  <details class="box"><summary>${L('Technical evidence','পরীক্ষার তথ্য')}</summary><pre style="white-space:pre-wrap">${esc(JSON.stringify({quality:r.quality,ml:r.ml},null,2))}</pre></details>
  <div class="actions"><button class="btn ghost" id="vdraft">${L('Draft re-upload request','আবার ছবি চাওয়ার খসড়া')}</button><button class="btn ghost" id="vdownload">${L('Download report','রিপোর্ট ডাউনলোড')}</button><button class="btn ghost" id="vlisten">${L('Listen','শুনুন')}</button></div><div id="vdraftbox" class="box" hidden></div></div>`:''}
- </section></div></main>`;
+ </section></div> ${typeof walletPanel === "function" ? walletPanel() : ""}</main>`;
 }
 async function loadVSample(id){
  if(vs.busy)return;
@@ -67,7 +67,9 @@ document.addEventListener('click',e=>{
  if(a.id==='vclear'){vs.epoch++;Object.assign(vs,{busy:false,image:null,reference:null,result:null,values:{},conf:{},confirmed:false,readMode:'none',error:'',label:''});stopSpeech();render()}
  if(a.id==='vdraft'&&vs.result){$('#vdraftbox').hidden=false;$('#vdraftbox').textContent=vs.result.reupload_draft+' '+L('(Draft only; nothing sent.)','(শুধু খসড়া; কিছু পাঠানো হয়নি।)')}
  if(a.id==='vlisten'&&vs.result)speak(vs.result.explanation?.[state.lang]||vs.result.summary[state.lang]);
- if(a.id==='vdownload'&&vs.result){const url=URL.createObjectURL(new Blob([JSON.stringify(vs.result,null,2)],{type:'application/json'}));const link=document.createElement('a');link.href=url;link.download='kagoj-bondhu-review.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+ if (a.id === 'vdownload' && vs.result) {
+  downloadReportPDF();
+}
 });
 
 async function readVerifyAI(){
@@ -82,4 +84,304 @@ async function readVerifyAI(){
   else{for(const [key,f] of Object.entries(j.fields||{})){vs.values[key]=f.value;vs.conf[key]=f.confidence;}vs.readMode='live';}
  }catch(e){if(epoch===vs.epoch){vs.readMode='unavailable';vs.error=e.message}}
  finally{if(epoch===vs.epoch){vs.busy=false;render()}}
+}
+async function downloadReportPDF() {
+  if (!vs.result) return;
+
+  // Open immediately so browsers do not block the new window.
+  const printWindow = window.open('', '_blank');
+
+  if (!printWindow) {
+    toast(L(
+      'Allow pop-ups for this site to export the PDF.',
+      'PDF তৈরি করতে এই সাইটের পপ-আপ অনুমতি দিন।'
+    ));
+    return;
+  }
+
+  const report = vs.result;
+  const lang = state.lang;
+  const text = (en, bn) => lang === 'bn' ? bn : en;
+  const safe = value => esc(String(value ?? '—'));
+
+  const localized = value => {
+    if (typeof value === 'string') return value;
+    return value?.[lang] || value?.en || '';
+  };
+
+  const title = text(
+    'Kagoj Bondhu — Document Review',
+    'কাগজ বন্ধু — কাগজ পর্যালোচনার রিপোর্ট'
+  );
+
+  const status = localized(report.label) || report.outcome;
+  const explanation =
+    localized(report.explanation) || localized(report.summary);
+
+  const generated = new Date().toLocaleString(
+    lang === 'bn' ? 'bn-BD' : 'en-GB',
+    { timeZone: 'Asia/Dhaka' }
+  );
+
+  const fieldRows = Object.entries(vs.values || {})
+    .filter(([, value]) => value !== null && value !== '')
+    .map(([key, value]) => {
+      const labels = fieldLabels[key];
+      const label = labels
+        ? labels[lang === 'bn' ? 1 : 0]
+        : key;
+
+      return `
+        <tr>
+          <td>${safe(label)}</td>
+          <td>${safe(value)}</td>
+        </tr>
+      `;
+    }).join('');
+
+  const findings = (report.findings || []).map(item => `
+    <li>
+      ${safe(item[lang] || item.en || item.code)}
+    </li>
+  `).join('');
+
+  const missing = (report.missing || []).map(key => {
+    const labels = fieldLabels[key];
+    return safe(labels ? labels[lang === 'bn' ? 1 : 0] : key);
+  }).join(', ');
+
+  const fontURL = new URL('/fonts/fonts.css', location.href).href;
+
+  printWindow.document.open();
+  printWindow.document.write(`
+    <!DOCTYPE html>
+    <html lang="${lang === 'bn' ? 'bn' : 'en'}">
+    <head>
+      <meta charset="utf-8">
+      <title>Kagoj-Bondhu-Report</title>
+      <link rel="stylesheet" href="${safe(fontURL)}">
+
+      <style>
+        @page {
+          size: A4;
+          margin: 16mm;
+        }
+
+        * {
+          box-sizing: border-box;
+        }
+
+        body {
+          margin: 0;
+          color: #172b23;
+          background: white;
+          font-family: 'Hind Siliguri', Arial, sans-serif;
+          font-size: 12pt;
+          line-height: 1.6;
+        }
+
+        header {
+          border-bottom: 3px solid #0d6b4d;
+          padding-bottom: 12px;
+          margin-bottom: 20px;
+        }
+
+        h1 {
+          margin: 0;
+          font-size: 23pt;
+          color: #0d4a37;
+        }
+
+        h2 {
+          margin: 22px 0 8px;
+          font-size: 15pt;
+          break-after: avoid;
+        }
+
+        p {
+          margin: 8px 0;
+          overflow-wrap: anywhere;
+        }
+
+        .meta, .footer {
+          color: #52645b;
+          font-size: 10pt;
+        }
+
+        .status {
+          border: 1px solid #aabdb2;
+          border-left: 5px solid #0d6b4d;
+          padding: 12px 16px;
+          margin: 18px 0;
+        }
+
+        .status strong {
+          font-size: 16pt;
+        }
+
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          table-layout: fixed;
+        }
+
+        th, td {
+          padding: 8px 10px;
+          border: 1px solid #d4ddd7;
+          text-align: left;
+          overflow-wrap: anywhere;
+          vertical-align: top;
+        }
+
+        th {
+          background: #edf4ef;
+        }
+
+        thead {
+          display: table-header-group;
+        }
+
+        tr {
+          break-inside: avoid;
+        }
+
+        li {
+          margin-bottom: 8px;
+          overflow-wrap: anywhere;
+        }
+
+        .footer {
+          margin-top: 24px;
+          border-top: 1px solid #d4ddd7;
+          padding-top: 12px;
+        }
+
+        .toolbar {
+          padding: 12px;
+          margin-bottom: 20px;
+          background: #edf4ef;
+        }
+
+        button {
+          padding: 10px 18px;
+          cursor: pointer;
+          font: inherit;
+        }
+
+        @media screen {
+          body {
+            max-width: 850px;
+            margin: 24px auto;
+            padding: 20px;
+          }
+        }
+
+        @media print {
+          .toolbar {
+            display: none;
+          }
+        }
+      </style>
+    </head>
+
+    <body>
+      <div class="toolbar">
+        <button onclick="window.print()">
+          ${text('Print / Save as PDF', 'প্রিন্ট / PDF হিসেবে সংরক্ষণ')}
+        </button>
+        <p>${text(
+          'Choose “Save as PDF” as the destination.',
+          'Destination থেকে “Save as PDF” নির্বাচন করুন।'
+        )}</p>
+      </div>
+
+      <header>
+        <h1>${safe(title)}</h1>
+        <p class="meta">
+          ${text('Generated', 'তৈরির সময়')}: ${safe(generated)}
+          · ${text('Bangladesh time', 'বাংলাদেশ সময়')}
+        </p>
+        <p class="meta">
+          ${text('Document type', 'কাগজের ধরন')}: ${safe(vs.module)}
+        </p>
+      </header>
+
+      <section class="status">
+        <strong>${safe(status)}</strong>
+        <p>${safe(explanation)}</p>
+      </section>
+
+      <h2>${text('Reviewed fields', 'পর্যালোচনা করা তথ্য')}</h2>
+
+      <p class="meta">
+        ${vs.confirmed
+          ? text(
+              'The user confirmed these fields against the document.',
+              'ব্যবহারকারী কাগজের সঙ্গে এই তথ্য মিলিয়ে নিশ্চিত করেছেন।'
+            )
+          : text(
+              'These fields have not been confirmed by the user.',
+              'ব্যবহারকারী এই তথ্য এখনো নিশ্চিত করেননি।'
+            )
+        }
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>${text('Field', 'তথ্য')}</th>
+            <th>${text('Value', 'মান')}</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${fieldRows || `
+            <tr>
+              <td colspan="2">
+                ${text('No fields available.', 'কোনো তথ্য পাওয়া যায়নি।')}
+              </td>
+            </tr>
+          `}
+        </tbody>
+      </table>
+
+      <h2>${text('Findings', 'পর্যবেক্ষণ')}</h2>
+
+      ${findings
+        ? `<ul>${findings}</ul>`
+        : `<p>${text(
+            'No findings were returned within the checks performed.',
+            'সম্পন্ন যাচাইয়ের মধ্যে কোনো পর্যবেক্ষণ ফেরত আসেনি।'
+          )}</p>`
+      }
+
+      ${missing ? `
+        <h2>${text('Missing or unconfirmed', 'অনুপস্থিত বা অনিশ্চিত তথ্য')}</h2>
+        <p>${missing}</p>
+      ` : ''}
+
+      <div class="footer">
+        <strong>${text('Scope and limitations', 'সীমা ও সীমাবদ্ধতা')}</strong>
+        <p>${text(
+          'This report summarizes document checks and user-reviewed values. It is not an authenticity certificate, proof of fraud, or an automatic approval or rejection. A person must review the findings.',
+          'এই রিপোর্টে কাগজের যাচাই ও ব্যবহারকারীর পর্যালোচনা করা তথ্য দেখানো হয়েছে। এটি সত্যতার সনদ, প্রতারণার প্রমাণ বা স্বয়ংক্রিয় অনুমোদন বা প্রত্যাখ্যান নয়। পর্যবেক্ষণগুলো মানুষকে পর্যালোচনা করতে হবে।'
+        )}</p>
+      </div>
+    </body>
+    </html>
+  `);
+  printWindow.document.close();
+
+  // Wait for the report and Bangla fonts before opening print preview.
+  if (printWindow.document.readyState !== 'complete') {
+    await new Promise(resolve => {
+      printWindow.addEventListener('load', resolve, { once: true });
+    });
+  }
+
+  await printWindow.document.fonts.ready;
+
+  if (!printWindow.closed) {
+    printWindow.focus();
+    printWindow.print();
+  }
 }
